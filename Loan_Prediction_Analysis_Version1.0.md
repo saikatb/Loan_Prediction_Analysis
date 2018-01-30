@@ -394,22 +394,8 @@ sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
 
 ![png](output_39_1.png)
 
-Frome the above distribution of the log value of CoapplicantIncome it has been found that the range of the modified CoapplicantIncome varied from -3.00 to +13.00. For the rest of the columns, the range varied from 0 to 1. Henceforth, the idea of normalizing the data taking the log will not work here. 
+Frome the above distribution of the log value of CoapplicantIncome it has been found that the range of the modified CoapplicantIncome varied from -3.00 to +13.00. For the rest of the columns, the range varied from 0 to 1. Henceforth, the idea of normalizing the data by taking the log of the column values will not work here. 
 
-
-```python
-Loan['CoapplicantIncome'].describe()
-```
-
-    count      614.000000
-    mean      1621.690423
-    std       2926.001661
-    min          1.000000
-    25%          1.000000
-    50%       1188.500000
-    75%       2297.250000
-    max      41667.000000
-    Name: CoapplicantIncome, dtype: float64
 
 
 **Multivariate Analysis**
