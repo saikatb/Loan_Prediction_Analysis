@@ -9,7 +9,9 @@ import seaborn as sns
 sns.set_style('whitegrid')
 %matplotlib inline
 ```
-**Loading the data into the dataframe called "Loan"**
+**Loading the dataset**
+
+The csv file has been loaded into the dataframe "Loan"
 
 ```python
 Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
@@ -18,7 +20,6 @@ Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
 ```python
 Loan.shape
 ```
-
     (614, 13)
 
 The dataset has total 13 columns and 614 rows
@@ -26,7 +27,6 @@ The dataset has total 13 columns and 614 rows
 ```python
 Loan.info()
 ```
-
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 614 entries, 0 to 613
     Data columns (total 13 columns):
@@ -45,7 +45,34 @@ Loan.info()
     Loan_Status          614 non-null object
     dtypes: float64(5), int64(1), object(7)
     memory usage: 62.4+ KB
-    
+
+**Types of Data**
+
+From our initial observation we can say that the datframe is consisting of qualitative and quantitative data
+There are all together 13 columns in the dataframe. The dataframe contains 7 columns which consists of categorical data i.e.
+
+        1) Loan_ID
+        2) Gender
+        3) Married
+        4) Education
+        5) Self_Employed
+        6) Property_Area
+        7) Loan_Status
+        
+These 7 columns of categorical data are all nominal. The rest of the 6 columns out of 13 are quantitative and are as follow:
+
+        1) Dependents
+        2) ApplicantIncome
+        3) CoapplicantIncome
+        4) LoanAmount
+        5) Loan_Amount_Term
+        6) Credit_History
+        
+Out of these 6 quantitative columns ApplicantIncome is discrete and the rest 5 are continuous
+
+For continuous Data we can illustrate the information though Histogram or Boxplot
+
+
 ```python
 Loan.isnull().sum()
 ```
