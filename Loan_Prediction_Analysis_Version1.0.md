@@ -296,14 +296,17 @@ Loan.info()
 ```    
 **Histogram**
 
-```python
+Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
 
+```python
 import seaborn as sns
 sns.distplot(Loan['ApplicantIncome'],color='r')
 ```
 
 ![png](output_27_1.png)
 
+From the above histogram of ***ApplicantIncome*** column we can see that the distribution is heavily positively skewed. 
+Also the ***skewness*** and the ***kurtosis*** is really high as calculated below.
 
 ```python
 print("Skewness: %f" % Loan['ApplicantIncome'].skew())
@@ -313,6 +316,8 @@ print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
     Skewness: 6.539513
     Kurtosis: 60.540676
     
+In order to achieve a more acceptable distribution we took the ***log*** of column ***ApplicantIncome*** and ploted the histogram.
+From the below graph it can infered that heavily skewed distribution has been replaced by a reasonable normal distribution.
 
 ```python
 import seaborn as sns
