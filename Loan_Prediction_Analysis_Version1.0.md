@@ -99,24 +99,8 @@ Loan = Loan.fillna({"Gender":"Male", "Self_Employed":"No"})
 Loan.drop('Loan_ID',axis=1,inplace=True)
 ```
 
-# Univariate Analysis 
+**Univariate Analysis** 
 
-```python
-Loan.isnull().sum()
-```
-    Gender                0
-    Married               3
-    Dependents           15
-    Education             0
-    Self_Employed         0
-    ApplicantIncome       0
-    CoapplicantIncome     0
-    LoanAmount           22
-    Loan_Amount_Term     14
-    Credit_History       50
-    Property_Area         0
-    Loan_Status           0
-    dtype: int64
 
 ```python
 Loan['Gender'].value_counts()
@@ -124,6 +108,8 @@ Loan['Gender'].value_counts()
     Male      502
     Female    112
     Name: Gender, dtype: int64
+    
+Number of "Male" is more in the observation
 
 ``python
 Loan['Education'].value_counts()
@@ -131,6 +117,10 @@ Loan['Education'].value_counts()
     Graduate        480
     Not Graduate    134
     Name: Education, dtype: int64
+
+
+```
+There are more number of Graduates 
 
 ```python
 Loan['Dependents'].value_counts()
@@ -142,7 +132,7 @@ Loan['Dependents'].value_counts()
     4.0     50
     3.0      1
     Name: Dependents, dtype: int64
-
+    
 
 ```python
 Loan['Married'].value_counts()
