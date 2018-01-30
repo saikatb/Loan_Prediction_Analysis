@@ -1,4 +1,5 @@
 
+**Loading python Libraries**
 
 ```python
 import numpy as np
@@ -8,24 +9,19 @@ import seaborn as sns
 sns.set_style('whitegrid')
 %matplotlib inline
 ```
-
+**Loading the data into the dataframe called "Loan"**
 
 ```python
-Loan = pd.read_csv('C:/Users/admin/Desktop/Misc_ML/ML_Masterclass_dataset_Dec17.csv')
+Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
 ```
-
 
 ```python
 Loan.shape
 ```
 
-
-
-
     (614, 13)
 
-
-
+The dataset has total 13 columns and 614 rows
 
 ```python
 Loan.info()
@@ -50,15 +46,9 @@ Loan.info()
     dtypes: float64(5), int64(1), object(7)
     memory usage: 62.4+ KB
     
-
-
 ```python
 Loan.isnull().sum()
 ```
-
-
-
-
     Loan_ID               0
     Gender               13
     Married               3
@@ -74,14 +64,10 @@ Loan.isnull().sum()
     Loan_Status           0
     dtype: int64
 
-
-
+For the sake of simplicity the value NaN has been filled with the categorical value which has occured most of the time in a specific column.As for example, since "Male" is the most frequently occured categorical value in the column "Gender" hence existing NaN value had been replaced with the catergorical value "Male". 
+The same strategy has been applied for the column "Self Employed"
 
 ```python
-# For the sake of simplicity filling in the value with the number which has occured most of the type. 
-#As for example, in case of column "Gender" Male is the most frequently occured category hence we will fill in the null value
-#with "Male" and the same with the column "Self_Employed"
-
 Loan = Loan.fillna({"Gender":"Male", "Self_Employed":"No"})
 ```
 
