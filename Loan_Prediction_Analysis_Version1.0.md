@@ -96,141 +96,14 @@ The same strategy has been applied for the column "Self Employed"
 
 ```python
 Loan = Loan.fillna({"Gender":"Male", "Self_Employed":"No"})
-```
-
-
-```python
 Loan.drop('Loan_ID',axis=1,inplace=True)
-Loan.head()
 ```
 
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Married</th>
-      <th>Dependents</th>
-      <th>Education</th>
-      <th>Self_Employed</th>
-      <th>ApplicantIncome</th>
-      <th>CoapplicantIncome</th>
-      <th>LoanAmount</th>
-      <th>Loan_Amount_Term</th>
-      <th>Credit_History</th>
-      <th>Property_Area</th>
-      <th>Loan_Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Male</td>
-      <td>No</td>
-      <td>0.0</td>
-      <td>Graduate</td>
-      <td>No</td>
-      <td>5849</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>Urban</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Male</td>
-      <td>Yes</td>
-      <td>1.0</td>
-      <td>Graduate</td>
-      <td>No</td>
-      <td>4583</td>
-      <td>1508.0</td>
-      <td>128.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>Rural</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Male</td>
-      <td>Yes</td>
-      <td>0.0</td>
-      <td>Graduate</td>
-      <td>Yes</td>
-      <td>3000</td>
-      <td>0.0</td>
-      <td>66.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>Urban</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Male</td>
-      <td>Yes</td>
-      <td>0.0</td>
-      <td>Not Graduate</td>
-      <td>No</td>
-      <td>2583</td>
-      <td>2358.0</td>
-      <td>120.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>Urban</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Male</td>
-      <td>No</td>
-      <td>0.0</td>
-      <td>Graduate</td>
-      <td>No</td>
-      <td>6000</td>
-      <td>0.0</td>
-      <td>141.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>Urban</td>
-      <td>Y</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
 # Univariate Analysis 
 
+```python
 Loan.isnull().sum()
 ```
-
-
-
-
     Gender                0
     Married               3
     Dependents           15
@@ -245,43 +118,23 @@ Loan.isnull().sum()
     Loan_Status           0
     dtype: int64
 
-
-
-
 ```python
 Loan['Gender'].value_counts()
 ```
-
-
-
-
     Male      502
     Female    112
     Name: Gender, dtype: int64
 
-
-
-
-```python
+``python
 Loan['Education'].value_counts()
 ```
-
-
-
-
     Graduate        480
     Not Graduate    134
     Name: Education, dtype: int64
 
-
-
-
 ```python
 Loan['Dependents'].value_counts()
 ```
-
-
-
 
     0.0    345
     1.0    102
@@ -289,31 +142,18 @@ Loan['Dependents'].value_counts()
     4.0     50
     3.0      1
     Name: Dependents, dtype: int64
-
-
 
 
 ```python
 Loan['Married'].value_counts()
 ```
-
-
-
-
     Yes    398
     No     213
     Name: Married, dtype: int64
 
-
-
-
 ```python
 Loan['Dependents'].value_counts()
 ```
-
-
-
-
     0.0    345
     1.0    102
     2.0    101
@@ -321,80 +161,41 @@ Loan['Dependents'].value_counts()
     3.0      1
     Name: Dependents, dtype: int64
 
-
-
-
 ```python
 Loan['Self_Employed'].value_counts()
 ```
-
-
-
-
     No     532
     Yes     82
     Name: Self_Employed, dtype: int64
 
-
-
-
 ```python
 Loan['Property_Area'].value_counts()
 ```
-
-
-
-
     Semiurban    233
     Urban        202
     Rural        179
     Name: Property_Area, dtype: int64
 
-
-
-
 ```python
 Loan['Loan_Status'].value_counts()
 ```
 
-
-
-
     Y    422
     N    192
     Name: Loan_Status, dtype: int64
-
-
-
+    
+# Taking the backup of Loan data into Loan_bkp
 
 ```python
-# Taking the backup of Loan data into Loan_bkp
+
 Loan_bkp = Loan
 Loan_bkp.shape,Loan.shape
 ```
-
-
-
-
     ((614, 12), (614, 12))
 
-
-
-
-```python
-Loan_bkp.shape
-```
-
-
-
-
-    (614, 12)
-
-
-
+#Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset
 
 ```python
-## Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset ##
 
 from sklearn.preprocessing import LabelEncoder
 
@@ -407,216 +208,10 @@ Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
 Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
-    C:\Users\admin\Anaconda2\lib\site-packages\numpy\lib\arraysetops.py:216: FutureWarning: numpy not_equal will not check object identity in the future. The comparison did not return the same result as suggested by the identity (`is`)) and will change.
-      flag = np.concatenate(([True], aux[1:] != aux[:-1]))
-    
-
-
-```python
-Loan.head(10)
-```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Married</th>
-      <th>Dependents</th>
-      <th>Education</th>
-      <th>Self_Employed</th>
-      <th>ApplicantIncome</th>
-      <th>CoapplicantIncome</th>
-      <th>LoanAmount</th>
-      <th>Loan_Amount_Term</th>
-      <th>Credit_History</th>
-      <th>Property_Area</th>
-      <th>Loan_Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>5849</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4583</td>
-      <td>1508.0</td>
-      <td>128.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>3000</td>
-      <td>0.0</td>
-      <td>66.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2583</td>
-      <td>2358.0</td>
-      <td>120.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>6000</td>
-      <td>0.0</td>
-      <td>141.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1</td>
-      <td>2</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>5417</td>
-      <td>4196.0</td>
-      <td>267.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2333</td>
-      <td>1516.0</td>
-      <td>95.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1</td>
-      <td>2</td>
-      <td>3.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3036</td>
-      <td>2504.0</td>
-      <td>158.0</td>
-      <td>360.0</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1</td>
-      <td>2</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4006</td>
-      <td>1526.0</td>
-      <td>168.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1</td>
-      <td>2</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>12841</td>
-      <td>10968.0</td>
-      <td>349.0</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
 ```python
 # Checking Null Values
 Loan.isnull().sum()
 ```
-
-
-
-
     Gender                0
     Married               0
     Dependents           15
@@ -631,18 +226,13 @@ Loan.isnull().sum()
     Loan_Status           0
     dtype: int64
 
-
-
+#descriptive statistics summary
 
 ```python
-#descriptive statistics summary
+
 Loan['LoanAmount'].describe()
 #Loan['LoanAmount'].mean()
 ```
-
-
-
-
     count    592.000000
     mean     146.412162
     std       85.587325
@@ -653,16 +243,9 @@ Loan['LoanAmount'].describe()
     max      700.000000
     Name: LoanAmount, dtype: float64
 
-
-
-
 ```python
 Loan['Loan_Amount_Term'].describe()
 ```
-
-
-
-
     count    600.00000
     mean     342.00000
     std       65.12041
@@ -673,16 +256,9 @@ Loan['Loan_Amount_Term'].describe()
     max      480.00000
     Name: Loan_Amount_Term, dtype: float64
 
-
-
-
 ```python
 Loan['Credit_History'].describe()
 ```
-
-
-
-
     count    564.000000
     mean       0.842199
     std        0.364878
@@ -693,32 +269,22 @@ Loan['Credit_History'].describe()
     max        1.000000
     Name: Credit_History, dtype: float64
 
-
-
-
 ```python
 Loan['Credit_History'].value_counts()
 ```
-
-
-
-
     1.0    475
     0.0     89
     Name: Credit_History, dtype: int64
 
-
-
+#Replacing NAN values with 0 and mean 
 
 ```python
-## Replacing NAN values with 0 and mean ## 
-
 Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
 Loan['LoanAmount'].fillna(value=Loan['LoanAmount'].mean(),axis=0,inplace=True)
 Loan['Loan_Amount_Term'].fillna(value=Loan['Loan_Amount_Term'].mean(),axis=0,inplace=True)
 Loan['Credit_History'].fillna(value=Loan['Credit_History'].mean(),axis=0,inplace=True)
 ```
-
+Fron the below info of Loan dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
 
 ```python
 Loan.info()
@@ -742,26 +308,17 @@ Loan.info()
     dtypes: float64(5), int64(7)
     memory usage: 57.6 KB
     
+# Histogram
 
 
 ```python
-## Histogram
 
 import seaborn as sns
 sns.distplot(Loan['ApplicantIncome'],color='r')
 #sns.distplot(Loan['LoanAmount'],color='b')
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0xc586278>
-
-
-
-
 ![png](output_27_1.png)
-
 
 
 ```python
@@ -773,24 +330,13 @@ print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
     Kurtosis: 60.540676
     
 
-
 ```python
 import seaborn as sns
 import numpy as np
 sns.distplot(np.log(Loan['ApplicantIncome']),color='b')
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0xc780f60>
-
-
-
-
 ![png](output_29_1.png)
-
-
 
 ```python
 print("Skewness: %f" % np.log(Loan['ApplicantIncome']).skew())
@@ -799,21 +345,11 @@ print("Kurtosis: %f" % np.log(Loan['ApplicantIncome']).kurt())
 
     Skewness: 0.479580
     Kurtosis: 3.686875
-    
-
-
+  
 ```python
 import seaborn as sns
 sns.distplot(Loan['LoanAmount'],color='r')
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0xd9304a8>
-
-
-
 
 ![png](output_31_1.png)
 
@@ -826,25 +362,14 @@ print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
 
     Skewness: 2.726601
     Kurtosis: 10.896456
-    
-
-
+ 
 ```python
 import seaborn as sns
 import numpy as np
 sns.distplot(np.log(Loan['LoanAmount']),color='b')
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0xc97a358>
-
-
-
-
 ![png](output_33_1.png)
-
 
 
 ```python
@@ -855,14 +380,9 @@ print("Kurtosis: %f" % np.log(Loan['LoanAmount']).kurt())
     Skewness: -0.223227
     Kurtosis: 2.799973
     
-
-
 ```python
 Loan['CoapplicantIncome'].describe()
 ```
-
-
-
 
     count      614.000000
     mean      1621.245798
@@ -874,183 +394,28 @@ Loan['CoapplicantIncome'].describe()
     max      41667.000000
     Name: CoapplicantIncome, dtype: float64
 
-
-
-
 ```python
 import seaborn as sns
 sns.distplot(Loan['CoapplicantIncome'],color='r')
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0xdda8cc0>
-
-
-
-
 ![png](output_36_1.png)
-
-
 
 ```python
 Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
 ```
-
-    C:\Users\admin\Anaconda2\lib\site-packages\pandas\core\indexing.py:179: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-      self._setitem_with_indexer(indexer, value)
-    
-
-
-```python
-Loan.head()
-```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Married</th>
-      <th>Dependents</th>
-      <th>Education</th>
-      <th>Self_Employed</th>
-      <th>ApplicantIncome</th>
-      <th>CoapplicantIncome</th>
-      <th>LoanAmount</th>
-      <th>Loan_Amount_Term</th>
-      <th>Credit_History</th>
-      <th>Property_Area</th>
-      <th>Loan_Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>5849</td>
-      <td>1.0</td>
-      <td>146.412162</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4583</td>
-      <td>1508.0</td>
-      <td>128.000000</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>3000</td>
-      <td>1.0</td>
-      <td>66.000000</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2583</td>
-      <td>2358.0</td>
-      <td>120.000000</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>6000</td>
-      <td>1.0</td>
-      <td>141.000000</td>
-      <td>360.0</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
 
 ```python
 import seaborn as sns
 sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0xe34ba58>
-
-
-
-
 ![png](output_39_1.png)
-
 
 
 ```python
 Loan['CoapplicantIncome'].describe()
 ```
-
-
-
 
     count      614.000000
     mean      1621.690423
@@ -1063,12 +428,7 @@ Loan['CoapplicantIncome'].describe()
     Name: CoapplicantIncome, dtype: float64
 
 
-
-
-```python
 # Multivariate Analysis
-```
-
 
 ```python
 corr=Loan.corr()#["Loan_Status"]
@@ -1094,22 +454,9 @@ import seaborn as sns
 sns.pairplot(Loan,kind='scatter',size=1.5)
 ```
 
-
-
-
-    <seaborn.axisgrid.PairGrid at 0xe596860>
-
-
-
-
 ![png](output_43_1.png)
 
-
-
-```python
 # Data binning
-```
-
 
 ```python
 def AppIncome(ApplicantIncome):
@@ -1125,11 +472,9 @@ def AppIncome(ApplicantIncome):
         return 5
 ```
 
-
 ```python
 Loan['ApplicantIncome'] = Loan['ApplicantIncome'].apply(AppIncome)
 ```
-
 
 ```python
 def Loan_Amount(LoanAmount):
@@ -1143,11 +488,9 @@ def Loan_Amount(LoanAmount):
         return 4 
 ```
 
-
 ```python
 Loan['LoanAmount'] = Loan['LoanAmount'].apply(Loan_Amount)
 ```
-
 
 ```python
 def Coapplicant_Income(CoapplicantIncome):
@@ -1173,11 +516,9 @@ def Coapplicant_Income(CoapplicantIncome):
         return 10
 ```
 
-
 ```python
 Loan['CoapplicantIncome'] = Loan['CoapplicantIncome'].apply(Coapplicant_Income)
 ```
-
 
 ```python
 def LoanAmount_Term(Loan_Amount_Term):
@@ -1192,142 +533,13 @@ def LoanAmount_Term(Loan_Amount_Term):
     else:
         return 5
 ```
-
-
 ```python
 Loan['Loan_Amount_Term'] = Loan['Loan_Amount_Term'].apply(LoanAmount_Term)
 ```
 
-
-```python
-Loan.head()
-```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Married</th>
-      <th>Dependents</th>
-      <th>Education</th>
-      <th>Self_Employed</th>
-      <th>ApplicantIncome</th>
-      <th>CoapplicantIncome</th>
-      <th>LoanAmount</th>
-      <th>Loan_Amount_Term</th>
-      <th>Credit_History</th>
-      <th>Property_Area</th>
-      <th>Loan_Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>3</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
 ```python
 Loan.isnull().sum()
 ```
-
-
-
-
     Gender               0
     Married              0
     Dependents           0
@@ -1342,134 +554,12 @@ Loan.isnull().sum()
     Loan_Status          0
     dtype: int64
 
-
-
-
-```python
 # Dataframe after data binning
-Loan.head()
-```
 
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Married</th>
-      <th>Dependents</th>
-      <th>Education</th>
-      <th>Self_Employed</th>
-      <th>ApplicantIncome</th>
-      <th>CoapplicantIncome</th>
-      <th>LoanAmount</th>
-      <th>Loan_Amount_Term</th>
-      <th>Credit_History</th>
-      <th>Property_Area</th>
-      <th>Loan_Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>3</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>4</td>
-      <td>1.0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
+# correlation matrix
 
 ```python
-#correlation matrix
+
 corr=Loan.corr()#["Loan_Status"]
 plt.figure(figsize=(12, 8))
 
@@ -1510,40 +600,25 @@ Loan.info()
     dtypes: float64(2), int64(10)
     memory usage: 57.6 KB
     
-
-
 ```python
 Loan.shape
 ```
-
-
-
-
     (614, 12)
-
-
-
 
 ```python
 Y = Loan['Loan_Status']
 X = pd.concat([Loan['Gender'], Loan['Married'], Loan['Dependents'], Loan['Education'], Loan['Self_Employed'], Loan['ApplicantIncome'], Loan['CoapplicantIncome'], Loan['LoanAmount'], Loan['Loan_Amount_Term'], Loan['Credit_History'], Loan['Property_Area']],axis=1) 
 ```
 
-
 ```python
 Y.shape, X.shape
 ```
-
-
-
-
     ((614L,), (614, 11))
 
-
-
+# Logistic Regression 
 
 ```python
-#################### Logistic Regression ###############################
+
 import numpy as np
 #from array import array
 from sklearn.linear_model import LogisticRegression
@@ -1575,25 +650,12 @@ plt.title('Plot Accuracy Vs Testsize Using Logisitic Regression')
 
 ```
 
-    C:\Users\admin\Anaconda2\lib\site-packages\sklearn\cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-      "This module will be removed in 0.20.", DeprecationWarning)
-    
-
-
-
-
-    <matplotlib.text.Text at 0x1aa670f0>
-
-
-
-
 ![png](output_61_2.png)
 
 
+# Support Vector Machine 
 
 ```python
-#################### Support Vector Machine ###############################
-
 from sklearn.svm import SVC
 from sklearn import metrics
 
@@ -1618,20 +680,12 @@ plt.ylabel('Testing Accuracy')
 plt.title('Plot Accuracy Vs Testsize Using Support Vector Machine')
 ```
 
-
-
-
-    <matplotlib.text.Text at 0x1ac8c198>
-
-
-
-
 ![png](output_62_1.png)
 
-
+# K Nearest Neighbour 
 
 ```python
-#################### K Nearest Neighbour ###############################
+
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -1708,20 +762,12 @@ plt.figtext(0.6,0.68, "brown, neighbour = 5")
 plt.figtext(0.6,0.65, "yellow, neighbour = 6")
 ```
 
-
-
-
-    <matplotlib.text.Text at 0x1c139908>
-
-
-
-
 ![png](output_63_1.png)
 
-
+# Naive Bayes 
 
 ```python
-#################### Naive Bayes ###############################
+
 import numpy as np
 from sklearn.naive_bayes import GaussianNB
 from sklearn.cross_validation import train_test_split
@@ -1749,20 +795,12 @@ plt.ylabel('Testing Accuracy')
 plt.title('Plot Accuracy Vs Testsize Using Naive Bayes')
 ```
 
-
-
-
-    <matplotlib.text.Text at 0x1c230828>
-
-
-
-
 ![png](output_64_1.png)
 
-
+# Random Forrest Regression 
 
 ```python
-#################### Random Forrest Regression ###############################
+
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.cross_validation import train_test_split
@@ -1791,15 +829,7 @@ plt.title('Plot Accuracy Vs Testsize Using Random Forrest')
 ```
 
 
-
-
-    <matplotlib.text.Text at 0x1c319668>
-
-
-
-
 ![png](output_65_1.png)
-
 
 
 ```python
@@ -1823,19 +853,6 @@ df.head()
 
 
 
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -1902,8 +919,6 @@ df.head()
 </div>
 
 
-
-
 ```python
 import plotly.plotly as py
 import plotly.graph_objs as go
@@ -1915,13 +930,6 @@ ax = df.plot(legend=True, figsize=(12,6),linestyle='--',marker='o', title='TestS
 ax.set_xlabel("Test Size")
 ax.set_ylabel("Accuracy")
 ```
-
-
-
-
-    <matplotlib.text.Text at 0x1f79bd68>
-
-
 
 
 ![png](output_67_1.png)
@@ -1944,21 +952,6 @@ df_algo_max_min.head()
 ```
 
 
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -2001,8 +994,6 @@ df_algo_max_min.head()
 </div>
 
 
-
-
 ```python
 import numpy as np
 import pandas as pd
@@ -2013,64 +1004,26 @@ ax.set_xlabel("Accuracy_Value")
 ax.set_ylabel("Algo")
 ```
 
-
-
-
-    <matplotlib.text.Text at 0x1f6a9860>
-
-
-
-
 ![png](output_69_1.png)
-
 
 
 ```python
 import seaborn as sns
 sns.distplot(df['Logistic Regression'])
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x20154860>
-
-
-
-
 ![png](output_70_1.png)
-
-
 
 ```python
 import seaborn as sns
 sns.distplot(df['Naive Bayes'])
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x207df2b0>
-
-
-
-
 ![png](output_71_1.png)
-
-
 
 ```python
 import seaborn as sns
 sns.distplot(df['Random Forest'])
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x2092c5f8>
-
-
-
 
 ![png](output_72_1.png)
 
@@ -2081,14 +1034,6 @@ import seaborn as sns
 sns.distplot(df['Support Vector Machine'])
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x20d3c160>
-
-
-
-
 ![png](output_73_1.png)
 
 
@@ -2098,32 +1043,13 @@ import seaborn as sns
 sns.distplot(df['k Nearrest Neighbor=5'])
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x20fb14a8>
-
-
-
-
 ![png](output_74_1.png)
-
-
 
 ```python
 sns.pairplot(df)
 ```
 
-
-
-
-    <seaborn.axisgrid.PairGrid at 0x212789e8>
-
-
-
-
 ![png](output_75_1.png)
-
 
 
 ```python
