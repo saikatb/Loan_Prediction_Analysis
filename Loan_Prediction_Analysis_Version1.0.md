@@ -311,11 +311,11 @@ Also the ***skewness*** and the ***kurtosis*** is really high as calculated belo
 ```python
 print("Skewness: %f" % Loan['ApplicantIncome'].skew())
 print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
-```
 
     Skewness: 6.539513
     Kurtosis: 60.540676
-    
+```
+
 In order to achieve a more acceptable distribution we took the ***log*** of column ***ApplicantIncome*** and ploted the histogram.
 From the below graph it can infered that heavily skewed distribution has been replaced by a reasonable normal distribution.
 
@@ -330,11 +330,13 @@ sns.distplot(np.log(Loan['ApplicantIncome']),color='b')
 ```python
 print("Skewness: %f" % np.log(Loan['ApplicantIncome']).skew())
 print("Kurtosis: %f" % np.log(Loan['ApplicantIncome']).kurt())
-```
 
     Skewness: 0.479580
     Kurtosis: 3.686875
-  
+```
+
+From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
+
 ```python
 import seaborn as sns
 sns.distplot(Loan['LoanAmount'],color='r')
@@ -343,15 +345,16 @@ sns.distplot(Loan['LoanAmount'],color='r')
 ![png](output_31_1.png)
 
 
-
 ```python
 print("Skewness: %f" % Loan['LoanAmount'].skew())
 print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
-```
 
     Skewness: 2.726601
     Kurtosis: 10.896456
- 
+```
+
+So to make the distribution look more normal again the same procedure has been followed.
+
 ```python
 import seaborn as sns
 import numpy as np
@@ -369,19 +372,6 @@ print("Kurtosis: %f" % np.log(Loan['LoanAmount']).kurt())
     Skewness: -0.223227
     Kurtosis: 2.799973
     
-```python
-Loan['CoapplicantIncome'].describe()
-```
-
-    count      614.000000
-    mean      1621.245798
-    std       2926.248369
-    min          0.000000
-    25%          0.000000
-    50%       1188.500000
-    75%       2297.250000
-    max      41667.000000
-    Name: CoapplicantIncome, dtype: float64
 
 ```python
 import seaborn as sns
@@ -389,6 +379,8 @@ sns.distplot(Loan['CoapplicantIncome'],color='r')
 ```
 
 ![png](output_36_1.png)
+
+
 
 ```python
 Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
