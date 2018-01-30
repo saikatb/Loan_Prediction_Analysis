@@ -134,39 +134,39 @@ Loan['Dependents'].value_counts()
 
 ```python
 Loan['Married'].value_counts()
-```
+
     Yes    398
     No     213
     Name: Married, dtype: int64
-
+```
 4) In the observation Number of married people is more which clearly signifies that married people are inclined towards taking loan
 
 ```python
 Loan['Self_Employed'].value_counts()
-```
+
     No     532
     Yes     82
     Name: Self_Employed, dtype: int64
-
+```
 5) People who are self employed are not so comfortable or sure in applying for the loan  
 
 ```python
 Loan['Property_Area'].value_counts()
-```
+
     Semiurban    233
     Urban        202
     Rural        179
     Name: Property_Area, dtype: int64
-
+```
 6) People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
 
 ```python
 Loan['Loan_Status'].value_counts()
-```
+
     Y    422
     N    192
     Name: Loan_Status, dtype: int64
-
+```
 7) Most of the loan applications have been approved.
 
 
@@ -182,25 +182,25 @@ In a nuttshell, the gist of the analysis is as below :
     7)  Most of the loan applications have been approved. 
 
 
-*Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset*
+**Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset**
 
 ```python
 
 from sklearn.preprocessing import LabelEncoder
 
-lbl_encoder = LabelEncoder()
-Loan["Gender"] = lbl_encoder.fit_transform(Loan["Gender"])
-Loan["Married"] = lbl_encoder.fit_transform(Loan["Married"])
-Loan["Education"] = lbl_encoder.fit_transform(Loan["Education"])
-Loan["Self_Employed"] = lbl_encoder.fit_transform(Loan["Self_Employed"])
-Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
-Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
+        lbl_encoder = LabelEncoder()
+        Loan["Gender"] = lbl_encoder.fit_transform(Loan["Gender"])
+        Loan["Married"] = lbl_encoder.fit_transform(Loan["Married"])
+        Loan["Education"] = lbl_encoder.fit_transform(Loan["Education"])
+        Loan["Self_Employed"] = lbl_encoder.fit_transform(Loan["Self_Employed"])
+        Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
+        Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
 ```python
 # Checking Null Values
 Loan.isnull().sum()
-```
+
     Gender                0
     Married               0
     Dependents           15
@@ -214,14 +214,12 @@ Loan.isnull().sum()
     Property_Area         0
     Loan_Status           0
     dtype: int64
-
-#descriptive statistics summary
+```
+**Descriptive statistics summary**
 
 ```python
 
 Loan['LoanAmount'].describe()
-#Loan['LoanAmount'].mean()
-```
     count    592.000000
     mean     146.412162
     std       85.587325
@@ -231,10 +229,11 @@ Loan['LoanAmount'].describe()
     75%      168.000000
     max      700.000000
     Name: LoanAmount, dtype: float64
+```
 
 ```python
 Loan['Loan_Amount_Term'].describe()
-```
+
     count    600.00000
     mean     342.00000
     std       65.12041
@@ -244,10 +243,10 @@ Loan['Loan_Amount_Term'].describe()
     75%      360.00000
     max      480.00000
     Name: Loan_Amount_Term, dtype: float64
-
+```
 ```python
 Loan['Credit_History'].describe()
-```
+
     count    564.000000
     mean       0.842199
     std        0.364878
@@ -257,28 +256,26 @@ Loan['Credit_History'].describe()
     75%        1.000000
     max        1.000000
     Name: Credit_History, dtype: float64
-
+```
 ```python
 Loan['Credit_History'].value_counts()
-```
+
     1.0    475
     0.0     89
     Name: Credit_History, dtype: int64
-
-#Replacing NAN values with 0 and mean 
+```
+**Replacing NAN values with 0 and mean** 
 
 ```python
-Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
-Loan['LoanAmount'].fillna(value=Loan['LoanAmount'].mean(),axis=0,inplace=True)
-Loan['Loan_Amount_Term'].fillna(value=Loan['Loan_Amount_Term'].mean(),axis=0,inplace=True)
-Loan['Credit_History'].fillna(value=Loan['Credit_History'].mean(),axis=0,inplace=True)
+    Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
+    Loan['LoanAmount'].fillna(value=Loan['LoanAmount'].mean(),axis=0,inplace=True)
+    Loan['Loan_Amount_Term'].fillna(value=Loan['Loan_Amount_Term'].mean(),axis=0,inplace=True)
+    Loan['Credit_History'].fillna(value=Loan['Credit_History'].mean(),axis=0,inplace=True)
 ```
-Fron the below info of Loan dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
+Fron the below info of dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
 
 ```python
 Loan.info()
-```
-
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 614 entries, 0 to 613
     Data columns (total 12 columns):
@@ -296,15 +293,13 @@ Loan.info()
     Loan_Status          614 non-null int64
     dtypes: float64(5), int64(7)
     memory usage: 57.6 KB
-    
-# Histogram
-
+```    
+**Histogram**
 
 ```python
 
 import seaborn as sns
 sns.distplot(Loan['ApplicantIncome'],color='r')
-#sns.distplot(Loan['LoanAmount'],color='b')
 ```
 
 ![png](output_27_1.png)
