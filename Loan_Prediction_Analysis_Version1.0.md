@@ -104,25 +104,24 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 
 ```python
 Loan['Gender'].value_counts()
-```
+
     Male      502
     Female    112
     Name: Gender, dtype: int64
-    
+```
 1) Number of "Male" is more in the observation
 
 ```python
 Loan['Education'].value_counts()
-```
+
     Graduate        480
     Not Graduate    134
     Name: Education, dtype: int64
-
+```
 2) There are more number of Graduates present among those who have applied for the Loan 
 
 ```python
 Loan['Dependents'].value_counts()
-```
 
     0.0    345
     1.0    102
@@ -130,7 +129,7 @@ Loan['Dependents'].value_counts()
     4.0     50
     3.0      1
     Name: Dependents, dtype: int64
-
+```
 3) People with "0" dependent expects to get their loan approved
 
 ```python
