@@ -363,6 +363,7 @@ sns.distplot(np.log(Loan['LoanAmount']),color='b')
 
 ![png](output_33_1.png)
 
+The distribution is slightly negatively skewed
 
 ```python
 print("Skewness: %f" % np.log(Loan['LoanAmount']).skew())
@@ -385,6 +386,7 @@ sns.distplot(Loan['CoapplicantIncome'],color='r')
 ```python
 Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
 ```
+The value 0 has been replaced with 1 as log(0) is undefined and we wont able to plot the histogram.
 
 ```python
 import seaborn as sns
@@ -392,6 +394,8 @@ sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
 ```
 
 ![png](output_39_1.png)
+
+Frome the above distribution of the log value of CoapplicantIncome it has been found that the range of the modified CoapplicantIncome varied from -3.00 to +13.00. For the rest of the columns, the range varied from 0 to 1. Henceforth, the idea of normalizing the data taking the log will not work here. 
 
 
 ```python
@@ -409,7 +413,9 @@ Loan['CoapplicantIncome'].describe()
     Name: CoapplicantIncome, dtype: float64
 
 
-# Multivariate Analysis
+**Multivariate Analysis**
+
+In multivariate analysis we tried to figure out the pearson correlation coefficient among different columns using a heatmap.
 
 ```python
 corr=Loan.corr()#["Loan_Status"]
