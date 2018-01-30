@@ -109,7 +109,7 @@ Loan['Gender'].value_counts()
     Female    112
     Name: Gender, dtype: int64
     
-Number of "Male" is more in the observation
+1) Number of "Male" is more in the observation
 
 ```python
 Loan['Education'].value_counts()
@@ -118,7 +118,7 @@ Loan['Education'].value_counts()
     Not Graduate    134
     Name: Education, dtype: int64
 
-There are more number of Graduates present among those who have applied for the Loan 
+2) There are more number of Graduates present among those who have applied for the Loan 
 
 ```python
 Loan['Dependents'].value_counts()
@@ -131,7 +131,7 @@ Loan['Dependents'].value_counts()
     3.0      1
     Name: Dependents, dtype: int64
 
-People with "0" dependent expects to get their loan approved
+3) People with "0" dependent expects to get their loan approved
 
 ```python
 Loan['Married'].value_counts()
@@ -140,7 +140,7 @@ Loan['Married'].value_counts()
     No     213
     Name: Married, dtype: int64
 
-In the observation Number of married people is more which clearly signifies that married people are inclined towards taking loan
+4) In the observation Number of married people is more which clearly signifies that married people are inclined towards taking loan
 
 ```python
 Loan['Self_Employed'].value_counts()
@@ -149,7 +149,7 @@ Loan['Self_Employed'].value_counts()
     Yes     82
     Name: Self_Employed, dtype: int64
 
-People who are self employed are not so comfortable or sure in applying for the loan  
+5) People who are self employed are not so comfortable or sure in applying for the loan  
 
 ```python
 Loan['Property_Area'].value_counts()
@@ -159,7 +159,7 @@ Loan['Property_Area'].value_counts()
     Rural        179
     Name: Property_Area, dtype: int64
 
-People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
+6) People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
 
 ```python
 Loan['Loan_Status'].value_counts()
@@ -168,19 +168,22 @@ Loan['Loan_Status'].value_counts()
     N    192
     Name: Loan_Status, dtype: int64
 
-Most of the loan applications have been approved.
+7) Most of the loan applications have been approved.
 
 
-# Taking the backup of Loan data into Loan_bkp
+In a nuttshell, the gist of the analysis is as below : 
+        
+    1)  Number of "Male" is more in the observation.
+    2)  There are more number of Graduates present among those who have applied for the Loan. 
+    3)  People with "0" dependent expects to get their loan approved.
+    4)  In the observation Number of married people is more which clearly signifies that married people are inclined 
+        towards taking loan.
+    5)  People who are self employed are not so comfortable or sure in applying for the loan.
+    6)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
+    7)  Most of the loan applications have been approved. 
 
-```python
 
-Loan_bkp = Loan
-Loan_bkp.shape,Loan.shape
-```
-    ((614, 12), (614, 12))
-
-#Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset
+*Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset*
 
 ```python
 
