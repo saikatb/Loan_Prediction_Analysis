@@ -202,11 +202,11 @@ Calculating the peercentage of Null values in the dataframe
         Loan_Status          0    0.000000
 ```
 
-So, the maximum number of null values (8.14 % ) present in the dataframe is for the column Credit_History. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
+So, the maximum number of null values **(8.14 % )** present in the column **Credit_History**. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
 
 Inspite of that, those null values can be replaced with the suitable values i.e. 0, mean, median or mode.
 
-Null values are present for below columns.
+Number of null values present in the columns are as below :
     
    1) Dependents **(15)**
    2) LoanAmount **(22)**
