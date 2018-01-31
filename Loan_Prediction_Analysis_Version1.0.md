@@ -189,16 +189,16 @@ Calculating the peercentage of Null values in the dataframe
                     Null_Values	%ofNullValeues
                     
         Loan_ID	            0	    0.000000
-        Gender	            13	    2.117264
+        Gender	           13	   2.117264
         Married	            3	    0.488599
-        Dependents	        15	    2.442997
+        Dependents	       15	    2.442997
         Education	        0	    0.000000
-        Self_Employed	    32	    5.211726
+        Self_Employed	   32	    5.211726
         ApplicantIncome	    0	    0.000000
         CoapplicantIncome	0	    0.000000
-        LoanAmount	        22	    3.583062
-        Loan_Amount_Term	14	    2.280130
-        Credit_History	    50	    8.143322
+        LoanAmount	       22	    3.583062
+        Loan_Amount_Term   14	    2.280130
+        Credit_History	   50	    8.143322
         Property_Area	    0	    0.000000
         Loan_Status	        0       0.000000
 ```
