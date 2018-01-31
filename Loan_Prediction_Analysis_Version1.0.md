@@ -50,25 +50,6 @@ Out of these 6 quantitative columns ApplicantIncome is discrete and the rest 5 a
 
 For continuous Data we can illustrate the information though Histogram or Boxplot
 
-
-```python
-Loan.isnull().sum()
-
-    Loan_ID               0
-    Gender               13
-    Married               3
-    Dependents           15
-    Education             0
-    Self_Employed        32
-    ApplicantIncome       0
-    CoapplicantIncome     0
-    LoanAmount           22
-    Loan_Amount_Term     14
-    Credit_History       50
-    Property_Area         0
-    Loan_Status           0
-    dtype: int64
-```
 For the sake of simplicity the value NaN has been filled with the categorical value which has occured most of the time in a specific column.As for example, since "Male" is the most frequently occured categorical value in the column "Gender" hence existing NaN value had been replaced with the catergorical value "Male". 
 The same strategy has been applied for the column "Self Employed"
 
@@ -150,14 +131,14 @@ Loan['Loan_Status'].value_counts()
 
 In a nuttshell, the gist of the analysis is as below : 
         
-    1)  Number of "Male" is more in the observation.
-    2)  There are more number of Graduates present among those who have applied for the Loan. 
-    3)  People with "0" dependent expects to get their loan approved.
-    4)  In the observation Number of married people is more which clearly signifies that married people are inclined 
+   1)  Number of "Male" is more in the observation.
+   2)  There are more number of Graduates present among those who have applied for the Loan. 
+   3)  People with "0" dependent expects to get their loan approved.
+   4)  In the observation Number of married people is more which clearly signifies that married people are inclined 
         towards taking loan.
-    5)  People who are self employed are not so comfortable or sure in applying for the loan.
-    6)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
-    7)  Most of the loan applications have been approved. 
+   5)  People who are self employed are not so comfortable or sure in applying for the loan.
+   6)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
+   7)  Most of the loan applications have been approved. 
 
 
 **Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset**
@@ -175,8 +156,9 @@ from sklearn.preprocessing import LabelEncoder
         Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
+Finding out the null values in the column
+
 ```python
-# Checking Null Values
 Loan.isnull().sum()
 
     Gender                0
