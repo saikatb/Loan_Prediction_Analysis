@@ -556,8 +556,8 @@ Below algorithms have been used while predicting the status of the Loan
    4) Naive Bayes
    5) Random Forrest
 
-An effort has been made to find out the all the accuracies of a specific model for all the possible test size from 0.01 to 0.99. 
-Graphs have also been plotted against test sizes and accuracies for all the above mentioned models and then eventually those graphs have been superimposed on a single plot.
+An effort has been made to find out the accuracies for all the possible test size from 0.01 to 0.99 for a specific model. 
+Graphs have been plotted against test sizes and accuracies for all the above-mentioned models and eventually been compared by plotting them in a single frame.
 
 **Logistic Regression** 
 
