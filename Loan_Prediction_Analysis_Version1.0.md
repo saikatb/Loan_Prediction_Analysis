@@ -449,9 +449,7 @@ def AppIncome(ApplicantIncome):
         return 4
     else:
         return 5
-```
 
-```python
 Loan['ApplicantIncome'] = Loan['ApplicantIncome'].apply(AppIncome)
 ```
 
@@ -465,9 +463,7 @@ def Loan_Amount(LoanAmount):
         return 3
     else:
         return 4 
-```
 
-```python
 Loan['LoanAmount'] = Loan['LoanAmount'].apply(Loan_Amount)
 ```
 
@@ -493,9 +489,7 @@ def Coapplicant_Income(CoapplicantIncome):
         return 9
     else:
         return 10
-```
 
-```python
 Loan['CoapplicantIncome'] = Loan['CoapplicantIncome'].apply(Coapplicant_Income)
 ```
 
@@ -511,31 +505,12 @@ def LoanAmount_Term(Loan_Amount_Term):
         return 4
     else:
         return 5
-```
-```python
+
 Loan['Loan_Amount_Term'] = Loan['Loan_Amount_Term'].apply(LoanAmount_Term)
 ```
 
-```python
-Loan.isnull().sum()
-```
-    Gender               0
-    Married              0
-    Dependents           0
-    Education            0
-    Self_Employed        0
-    ApplicantIncome      0
-    CoapplicantIncome    0
-    LoanAmount           0
-    Loan_Amount_Term     0
-    Credit_History       0
-    Property_Area        0
-    Loan_Status          0
-    dtype: int64
 
-# Dataframe after data binning
-
-# correlation matrix
+**Correlation matrix after data binning**
 
 ```python
 
@@ -552,37 +527,15 @@ sns.heatmap(corr,
 plt.title('Correlation between features');
 ```
 
+Below heatmap depicts the pearson correlation coefficient between two vairables and how exactly they are correlated. 
 
 ![png](output_56_0.png)
 
 
 
-```python
-Loan.info()
-```
+**Splittig the dataframe in training and test sample**
 
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 614 entries, 0 to 613
-    Data columns (total 12 columns):
-    Gender               614 non-null int64
-    Married              614 non-null int64
-    Dependents           614 non-null float64
-    Education            614 non-null int64
-    Self_Employed        614 non-null int64
-    ApplicantIncome      614 non-null int64
-    CoapplicantIncome    614 non-null int64
-    LoanAmount           614 non-null int64
-    Loan_Amount_Term     614 non-null int64
-    Credit_History       614 non-null float64
-    Property_Area        614 non-null int64
-    Loan_Status          614 non-null int64
-    dtypes: float64(2), int64(10)
-    memory usage: 57.6 KB
-    
-```python
-Loan.shape
-```
-    (614, 12)
+Before splitting the dataframe dataframe has been splitted into seperate dataframe. One datframe(Y) will have the target variable i.e. ***Loan_Status*** and the other (X) will contain the rest of the independent variables. 
 
 ```python
 Y = Loan['Loan_Status']
@@ -594,7 +547,19 @@ Y.shape, X.shape
 ```
     ((614L,), (614, 11))
 
-# Logistic Regression 
+
+Below algorithms have been used while predicting the status of the Loan
+
+   1) Logistic Regression
+   2) Support Vector Machine
+   3) K Nearest Neighbour 
+   4) Naive Bayes
+   5) Random Forrest
+
+An effort has been made to find out the all the accuracies of a specific model for all the possible test size from 0.01 to 0.99. 
+Graphs have also been plotted against test sizes and accuracies for all the above mentioned models and then eventually those graphs have been superimposed on a single plot.
+
+**Logistic Regression** 
 
 ```python
 
@@ -632,7 +597,7 @@ plt.title('Plot Accuracy Vs Testsize Using Logisitic Regression')
 ![png](output_61_2.png)
 
 
-# Support Vector Machine 
+**Support Vector Machine** 
 
 ```python
 from sklearn.svm import SVC
@@ -661,7 +626,7 @@ plt.title('Plot Accuracy Vs Testsize Using Support Vector Machine')
 
 ![png](output_62_1.png)
 
-# K Nearest Neighbour 
+**K Nearest Neighbour** 
 
 ```python
 
@@ -743,7 +708,7 @@ plt.figtext(0.6,0.65, "yellow, neighbour = 6")
 
 ![png](output_63_1.png)
 
-# Naive Bayes 
+**Naive Bayes** 
 
 ```python
 
@@ -776,7 +741,7 @@ plt.title('Plot Accuracy Vs Testsize Using Naive Bayes')
 
 ![png](output_64_1.png)
 
-# Random Forrest Regression 
+**Random Forrest Regression**
 
 ```python
 
@@ -831,8 +796,6 @@ df.head()
 
 
 
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
