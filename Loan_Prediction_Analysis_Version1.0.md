@@ -177,10 +177,10 @@ Loan.isnull().sum()
 ```
 From the above output it can be infered that the null values are present for below columns.
     
-   1) Dependents ***(15)**
-   2) LoanAmount ***(22)***
-   3) Loan_Amount_Term ***(14)***
-   4) Credit_History ***(50)***
+   1) Dependents **(15)**
+   2) LoanAmount **(22)**
+   3) Loan_Amount_Term **(14)**
+   4) Credit_History **(50)**
 
 **Replacing NAN values with 0 and mean** 
 
