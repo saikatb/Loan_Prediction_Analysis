@@ -422,9 +422,9 @@ plt.title('Correlation between features');
 
 From the above heatmap we can conclude following things:
 
-          1) Customers ***Credit history*** has got a huge influence in getting the approval of the Loan (corr=0.54)
-          2) The more is the ***applicant's income*** the more chance is there to get the loan (corr=0.57)
-          3) The bigger is the ***loan amount*** the lesser is the chance of getting the loan to be approved(corr=-0.036)
+  1) Customers ***Credit history*** has got a huge influence in getting the approval of the Loan (corr=0.54)
+  2) The more is the ***applicant's income*** the more chance is there to get the loan (corr=0.57)
+  3) The bigger is the ***loan amount*** the lesser is the chance of getting the loan to be approved(corr=-0.036)
 
 Below is the pairplot which clearly shows the scatter plot in between different columns of loan dataset and how they are correlated or even they are related whatsoever
 
