@@ -175,55 +175,13 @@ Loan.isnull().sum()
     Loan_Status           0
     dtype: int64
 ```
-**Descriptive statistics summary**
+From the above output it can be infered that the null values are present for below columns.
+    
+   1) Dependents ***(15)**
+   2) LoanAmount ***(22)***
+   3) Loan_Amount_Term ***(14)***
+   4) Credit_History ***(50)***
 
-```python
-
-Loan['LoanAmount'].describe()
-    count    592.000000
-    mean     146.412162
-    std       85.587325
-    min        9.000000
-    25%      100.000000
-    50%      128.000000
-    75%      168.000000
-    max      700.000000
-    Name: LoanAmount, dtype: float64
-```
-
-```python
-Loan['Loan_Amount_Term'].describe()
-
-    count    600.00000
-    mean     342.00000
-    std       65.12041
-    min       12.00000
-    25%      360.00000
-    50%      360.00000
-    75%      360.00000
-    max      480.00000
-    Name: Loan_Amount_Term, dtype: float64
-```
-```python
-Loan['Credit_History'].describe()
-
-    count    564.000000
-    mean       0.842199
-    std        0.364878
-    min        0.000000
-    25%        1.000000
-    50%        1.000000
-    75%        1.000000
-    max        1.000000
-    Name: Credit_History, dtype: float64
-```
-```python
-Loan['Credit_History'].value_counts()
-
-    1.0    475
-    0.0     89
-    Name: Credit_History, dtype: int64
-```
 **Replacing NAN values with 0 and mean** 
 
 ```python
