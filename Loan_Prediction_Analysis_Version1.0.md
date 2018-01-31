@@ -182,11 +182,10 @@ Calculating the peercentage of Null values in the dataframe
 ```python
         Loan_null = pd.DataFrame((Loan.isnull().sum()),columns=['Null_Values'])
         Loan_null['%ofNullValeues'] = ((Loan_null['Null_Values'])/614*100).sort_values(ascending=True)
-        #Loan_null['Null_Values'].sort_values(ascending=False)
         Loan_null
         
         
-                    Null_Values	%ofNullValeues
+                    Null_Values   %ofNullValeues
                     
         Loan_ID              0    0.000000
         Gender              13    2.117264
