@@ -17,55 +17,34 @@ The csv file has been loaded into the dataframe "Loan"
 Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
 ```
 
+The dataset has total 13 columns and 614 rows
+
 ```python
 Loan.shape
     (614, 13)
 ```
-The dataset has total 13 columns and 614 rows
 
-```python
-Loan.info()
-
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 614 entries, 0 to 613
-    Data columns (total 13 columns):
-    Loan_ID              614 non-null object
-    Gender               601 non-null object
-    Married              611 non-null object
-    Dependents           599 non-null float64
-    Education            614 non-null object
-    Self_Employed        582 non-null object
-    ApplicantIncome      614 non-null int64
-    CoapplicantIncome    614 non-null float64
-    LoanAmount           592 non-null float64
-    Loan_Amount_Term     600 non-null float64
-    Credit_History       564 non-null float64
-    Property_Area        614 non-null object
-    Loan_Status          614 non-null object
-    dtypes: float64(5), int64(1), object(7)
-    memory usage: 62.4+ KB
-```
 **Types of Data**
 
 From our initial observation we can say that the datframe is consisting of qualitative and quantitative data
 There are all together 13 columns in the dataframe. The dataframe contains 7 columns which consists of categorical data i.e.
 
-        1) Loan_ID
-        2) Gender
-        3) Married
-        4) Education
-        5) Self_Employed
-        6) Property_Area
-        7) Loan_Status
+   1) Loan_ID
+   2) Gender
+   3) Married
+   4) Education
+   5) Self_Employed
+   6) Property_Area
+   7) Loan_Status
         
 These 7 columns of categorical data are all nominal. The rest of the 6 columns out of 13 are quantitative and are as follow:
 
-        1) Dependents
-        2) ApplicantIncome
-        3) CoapplicantIncome
-        4) LoanAmount
-        5) Loan_Amount_Term
-        6) Credit_History
+   1) Dependents
+   2) ApplicantIncome
+   3) CoapplicantIncome
+   4) LoanAmount
+   5) Loan_Amount_Term
+   6) Credit_History
         
 Out of these 6 quantitative columns ApplicantIncome is discrete and the rest 5 are continuous
 
@@ -74,7 +53,7 @@ For continuous Data we can illustrate the information though Histogram or Boxplo
 
 ```python
 Loan.isnull().sum()
-```
+
     Loan_ID               0
     Gender               13
     Married               3
@@ -89,7 +68,7 @@ Loan.isnull().sum()
     Property_Area         0
     Loan_Status           0
     dtype: int64
-
+```
 For the sake of simplicity the value NaN has been filled with the categorical value which has occured most of the time in a specific column.As for example, since "Male" is the most frequently occured categorical value in the column "Gender" hence existing NaN value had been replaced with the catergorical value "Male". 
 The same strategy has been applied for the column "Self Employed"
 
