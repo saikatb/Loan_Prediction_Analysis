@@ -397,16 +397,16 @@ Below python code has been used in order to implement the normalization in the p
 
 
 Gender	Married	Dependents	Education	Self_Employed	ApplicantIncome	CoapplicantIncome	LoanAmount	Loan_Amount_Term	Credit_History	Property_Area	Loan_Status
-    0	    1.0	    0.5	    0.00	0.0     0.0	    0.070489	0.000000	0.198860	0.74359	1.0	1.0	1.0
-    1	    1.0	    1.0	    0.25	0.0	    0.0	    0.054830	0.036169	0.172214	0.74359	1.0	0.0	0.0
-    2	    1.0	    1.0	    0.00	0.0	    1.0	    0.035250	0.000000	0.082489	0.74359	1.0	1.0	1.0
-    3	    1.0	    1.0	    0.00	1.0	    0.0	    0.030093	0.056569	0.160637	0.74359	1.0	1.0	1.0
-    4	    1.0	    0.5	    0.00	0.0	    0.0	    0.072356	0.000000	0.191027	0.74359	1.0	1.0	1.0
-    5	    1.0	    1.0	    0.50	0.0	    1.0	    0.065145	0.100682	0.373372	0.74359	1.0	1.0	1.0
-    6	    1.0	    1.0	    0.00	1.0	    0.0	    0.027001	0.036361	0.124457	0.74359	1.0	1.0	1.0
-    7	    1.0	    1.0	    0.75	0.0	    0.0	    0.035696	0.060073	0.215630	0.74359	0.0	0.5	0.0
-    8	    1.0	    1.0	    0.50	0.0	    0.0	    0.047693	0.036601	0.230101	0.74359	1.0	1.0	1.0
-    9	    1.0	    1.0	    0.25	0.0	    0.0	    0.156970	0.263212	0.492041	0.74359	1.0	0.5	0.0
+    0	    1.0	    0.5	        0.00	    0.0     0.0	    0.070489	0.000000	0.198860	0.74359	1.0	1.0	1.0
+    1	    1.0	    1.0	        0.25	    0.0	    0.0	    0.054830	0.036169	0.172214	0.74359	1.0	0.0	0.0
+    2	    1.0	    1.0	        0.00	    0.0	    1.0	    0.035250	0.000000	0.082489	0.74359	1.0	1.0	1.0
+    3	    1.0	    1.0	        0.00	    1.0	    0.0	    0.030093	0.056569	0.160637	0.74359	1.0	1.0	1.0
+    4	    1.0	    0.5	        0.00	    0.0	    0.0	    0.072356	0.000000	0.191027	0.74359	1.0	1.0	1.0
+    5	    1.0	    1.0	        0.50	    0.0	    1.0	    0.065145	0.100682	0.373372	0.74359	1.0	1.0	1.0
+    6	    1.0	    1.0	        0.00	    1.0	    0.0	    0.027001	0.036361	0.124457	0.74359	1.0	1.0	1.0
+    7	    1.0	    1.0	        0.75	    0.0	    0.0	    0.035696	0.060073	0.215630	0.74359	0.0	0.5	0.0
+    8	    1.0	    1.0	        0.50	    0.0	    0.0	    0.047693	0.036601	0.230101	0.74359	1.0	1.0	1.0
+    9	    1.0	    1.0	        0.25	    0.0	    0.0	    0.156970	0.263212	0.492041	0.74359	1.0	0.5	0.0
  
 ```
 Heatmap plot after doing the normalizing the scale of all the columns in between range 0 and 1
@@ -424,106 +424,6 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
                     linecolor="lightblue")
         plt.title('Correlation between features with Normalization');
 ```
-
-
-
-
-**Data binning**
-
-```python
-def AppIncome(ApplicantIncome):
-    if ApplicantIncome < 5000:
-        return 1
-    elif  5000 <= ApplicantIncome < 10000:
-        return 2
-    elif  10000 <= ApplicantIncome < 15000:
-        return 3
-    elif  15000 <= ApplicantIncome < 20000:
-        return 4
-    else:
-        return 5
-
-Loan['ApplicantIncome'] = Loan['ApplicantIncome'].apply(AppIncome)
-```
-
-```python
-def Loan_Amount(LoanAmount):
-    if LoanAmount < 100:
-        return 1
-    elif  100 <= LoanAmount < 200:
-        return 2
-    elif  200 <= LoanAmount < 300:
-        return 3
-    else:
-        return 4 
-
-Loan['LoanAmount'] = Loan['LoanAmount'].apply(Loan_Amount)
-```
-
-```python
-def Coapplicant_Income(CoapplicantIncome):
-    if CoapplicantIncome < 1000:
-        return 1
-    elif  1000 <= CoapplicantIncome < 2000:
-        return 2
-    elif  2000 <= CoapplicantIncome < 3000:
-        return 3
-    elif  3000 <= CoapplicantIncome < 4000:
-        return 4
-    elif  4000 <= CoapplicantIncome < 5000:
-        return 5
-    elif  5000 <= CoapplicantIncome < 6000:
-        return 6
-    elif  6000 <= CoapplicantIncome < 7000:
-        return 7
-    elif  7000 <= CoapplicantIncome < 8000:
-        return 8
-    elif  8000 <= CoapplicantIncome < 9000:
-        return 9
-    else:
-        return 10
-
-Loan['CoapplicantIncome'] = Loan['CoapplicantIncome'].apply(Coapplicant_Income)
-```
-
-```python
-def LoanAmount_Term(Loan_Amount_Term):
-    if Loan_Amount_Term < 100:
-        return 1
-    elif  100 <= Loan_Amount_Term < 200:
-        return 2
-    elif  200 <= Loan_Amount_Term < 300:
-        return 3
-    elif  300 <= Loan_Amount_Term < 400:
-        return 4
-    else:
-        return 5
-
-Loan['Loan_Amount_Term'] = Loan['Loan_Amount_Term'].apply(LoanAmount_Term)
-```
-
-
-**Correlation matrix after data binning**
-
-```python
-
-corr=Loan.corr()#["Loan_Status"]
-plt.figure(figsize=(12, 8))
-
-sns.heatmap(corr, 
-            vmax=.8, 
-            linewidths=0.01,
-            square=True,
-            annot=True,
-            cmap='Blues',
-            linecolor="lightblue")
-plt.title('Correlation between features');
-```
-
-Below heatmap depicts the pearson correlation coefficient between two vairables and how exactly they are correlated. 
-
-![png](output_56_0.png)
-
 
 
 **Splittig the dataframe in training and test sample**
