@@ -382,7 +382,8 @@ Below is the pairplot which clearly shows the scatter plot in between different 
 
 **Normalization**
 
-
+Below is the dataset after normalizing the scale of all the columns from 0 to 1.
+Below python code has been used in order to implement the normalization in the present dataset.
 
 ```python
             from sklearn import preprocessing
@@ -396,19 +397,33 @@ Below is the pairplot which clearly shows the scatter plot in between different 
 
 
 Gender	Married	Dependents	Education	Self_Employed	ApplicantIncome	CoapplicantIncome	LoanAmount	Loan_Amount_Term	Credit_History	Property_Area	Loan_Status
-0	1.0	0.5	0.00	0.0	0.0	0.070489	0.000000	0.198860	0.74359	1.0	1.0	1.0
-1	1.0	1.0	0.25	0.0	0.0	0.054830	0.036169	0.172214	0.74359	1.0	0.0	0.0
-2	1.0	1.0	0.00	0.0	1.0	0.035250	0.000000	0.082489	0.74359	1.0	1.0	1.0
-3	1.0	1.0	0.00	1.0	0.0	0.030093	0.056569	0.160637	0.74359	1.0	1.0	1.0
-4	1.0	0.5	0.00	0.0	0.0	0.072356	0.000000	0.191027	0.74359	1.0	1.0	1.0
-5	1.0	1.0	0.50	0.0	1.0	0.065145	0.100682	0.373372	0.74359	1.0	1.0	1.0
-6	1.0	1.0	0.00	1.0	0.0	0.027001	0.036361	0.124457	0.74359	1.0	1.0	1.0
-7	1.0	1.0	0.75	0.0	0.0	0.035696	0.060073	0.215630	0.74359	0.0	0.5	0.0
-8	1.0	1.0	0.50	0.0	0.0	0.047693	0.036601	0.230101	0.74359	1.0	1.0	1.0
-9	1.0	1.0	0.25	0.0	0.0	0.156970	0.263212	0.492041	0.74359	1.0	0.5	0.0
+    0	    1.0	    0.5	    0.00	0.0     0.0	    0.070489	0.000000	0.198860	0.74359	1.0	1.0	1.0
+    1	    1.0	    1.0	    0.25	0.0	    0.0	    0.054830	0.036169	0.172214	0.74359	1.0	0.0	0.0
+    2	    1.0	    1.0	    0.00	0.0	    1.0	    0.035250	0.000000	0.082489	0.74359	1.0	1.0	1.0
+    3	    1.0	    1.0	    0.00	1.0	    0.0	    0.030093	0.056569	0.160637	0.74359	1.0	1.0	1.0
+    4	    1.0	    0.5	    0.00	0.0	    0.0	    0.072356	0.000000	0.191027	0.74359	1.0	1.0	1.0
+    5	    1.0	    1.0	    0.50	0.0	    1.0	    0.065145	0.100682	0.373372	0.74359	1.0	1.0	1.0
+    6	    1.0	    1.0	    0.00	1.0	    0.0	    0.027001	0.036361	0.124457	0.74359	1.0	1.0	1.0
+    7	    1.0	    1.0	    0.75	0.0	    0.0	    0.035696	0.060073	0.215630	0.74359	0.0	0.5	0.0
+    8	    1.0	    1.0	    0.50	0.0	    0.0	    0.047693	0.036601	0.230101	0.74359	1.0	1.0	1.0
+    9	    1.0	    1.0	    0.25	0.0	    0.0	    0.156970	0.263212	0.492041	0.74359	1.0	0.5	0.0
  
 ```
+Heatmap plot after doing the normalizing the scale of all the columns in between range 0 and 1
 
+```python
+        corr=Loan1.corr()#["Loan_Status"]
+        plt.figure(figsize=(12, 8))
+
+        sns.heatmap(corr, 
+                    vmax=.8, 
+                    linewidths=0.01,
+                    square=True,
+                    annot=True,
+                    cmap='Blues',
+                    linecolor="lightblue")
+        plt.title('Correlation between features with Normalization');
+```
 
 
 
