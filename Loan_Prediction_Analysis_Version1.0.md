@@ -347,7 +347,6 @@ sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
 Frome the above distribution of the log value of CoapplicantIncome it has been found that the range of the modified CoapplicantIncome varied from -3.00 to +13.00. For the rest of the columns, the range varied from 0 to 1. Henceforth, the idea of normalizing the data by taking the log of the column values will not work here. 
 
 
-
 **Multivariate Analysis**
 
 In multivariate analysis we tried to figure out the pearson correlation coefficient among different columns using a heatmap.
@@ -433,7 +432,7 @@ Y.shape, X.shape
     ((614L,), (614, 11))
 
 
-Below algorithms have been used while predicting the status of the Loan
+Below are the models been used to predict the status of the loan. ( whether it is issued or not ? )
 
    1) Logistic Regression
    2) Support Vector Machine
