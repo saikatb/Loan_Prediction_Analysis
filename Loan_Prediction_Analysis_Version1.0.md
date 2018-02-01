@@ -385,21 +385,20 @@ Below is the dataset after normalizing the scale of all the columns from 0 to 1.
 Below python code has been used in order to implement the normalization in the present dataset.
 
 ```python
-            from sklearn import preprocessing
-            import pandas as pd
-            x = Loan.values # returns a numpy array
-            min_max_scaler = preprocessing.MinMaxScaler()
-            x_scaled = min_max_scaler.fit_transform(x)
-            Loan_Normalized = pd.DataFrame(x_scaled)
+        from sklearn import preprocessing
+        import pandas as pd
+        x = Loan.values # returns a numpy array
+        min_max_scaler = preprocessing.MinMaxScaler()
+        x_scaled = min_max_scaler.fit_transform(x)
+        Loan_Norm = pd.DataFrame(x_scaled)
 
-            Loan_Normalized.columns = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome',  'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area', 'Loan_Status']
-
+        Loan_Norm.columns = ['Gender_Norm', 'Married_Norm', 'Dependents_Norm', 'Education_Norm', 'Self_Employed_Norm',           'ApplicantIncome_Norm', 'CoapplicantIncome_Norm', 'LoanAmount_Norm', 'Loan_Amount_Term_Norm', 'Credit_History_Norm', 'Property_Area_Norm', 'Loan_Status_Norm']
 
 ```
 Heatmap plot after doing the normalizing the scale of all the columns in between range 0 and 1
 
 ```python
-        corr=Loan_Normalized.corr()
+        corr=Loan_Norm.corr()
         plt.figure(figsize=(12, 8))
 
         sns.heatmap(corr, 
