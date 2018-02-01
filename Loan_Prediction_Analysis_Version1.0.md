@@ -425,6 +425,10 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
         plt.title('Correlation between features with Normalization');
 ```
 
+**Observation:**
+
+***Even after normalizing the scale in between value 0 and 1 we could not find any differences in pearson correlation coefficients between several parameters in the dataset***
+
 
 **Splittig the dataframe in training and test sample**
 
