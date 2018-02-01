@@ -390,16 +390,16 @@ Below python code has been used in order to implement the normalization in the p
             x = Loan.values # returns a numpy array
             min_max_scaler = preprocessing.MinMaxScaler()
             x_scaled = min_max_scaler.fit_transform(x)
-            Loan1 = pd.DataFrame(x_scaled)
+            Loan_Normalized = pd.DataFrame(x_scaled)
 
-            Loan1.columns = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome',               'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area', 'Loan_Status']
+            Loan_Normalized.columns = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome',  'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area', 'Loan_Status']
 
 
 ```
 Heatmap plot after doing the normalizing the scale of all the columns in between range 0 and 1
 
 ```python
-        corr=Loan1.corr()#["Loan_Status"]
+        corr=Loan_Normalized.corr()
         plt.figure(figsize=(12, 8))
 
         sns.heatmap(corr, 
@@ -411,6 +411,8 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
                     linecolor="lightblue")
         plt.title('Correlation between features with Normalization');
 ```
+![png](output_76_1.png)
+
 
 **Observation:**
 
