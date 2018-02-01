@@ -387,7 +387,7 @@ Below python code has been used in order to implement the normalization in the p
 ```python
         from sklearn import preprocessing
         import pandas as pd
-        x = Loan.values # returns a numpy array
+        x = Loan.values 
         min_max_scaler = preprocessing.MinMaxScaler()
         x_scaled = min_max_scaler.fit_transform(x)
         Loan_Norm = pd.DataFrame(x_scaled)
@@ -413,9 +413,7 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
 ![png](output_76_1.png)
 
 
-**Observation:**
-
-***Even after normalizing the scale in between value 0 and 1 we could not find any differences in pearson correlation coefficients between several parameters in the dataset***
+Even though the scale has been normalized in a scale of 0 and 1, no significant differences have been found in the pearson correlation coefficients between multple independent variables. Henceforth, it can be concluded that normalization did not play any significant role in data preprocessing.
 
 
 **Splittig the dataframe in training and test sample**
