@@ -60,8 +60,8 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 
 **Univariate Analysis** 
 
-
-```python                                               Loan['Gender'].describe()
+```python  
+                                                        Loan['Gender'].describe()
 Loan['Gender'].value_counts()                           count      614
     Male      502                                       unique       2
     Female    112                                       top       Male
