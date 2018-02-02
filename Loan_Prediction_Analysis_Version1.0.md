@@ -80,14 +80,28 @@ Loan['Education'].value_counts()
 2) There are more number of Graduates present among those who have applied for the Loan 
 
 ```python
-Loan['Dependents'].value_counts()
-
-    0.0    345
-    1.0    102
+                    
+Loan['Dependents'].value_counts()                    
+                                                
+    0.0    345                                          
+    1.0    102                                              
     2.0    101
     4.0     50
     3.0      1
     Name: Dependents, dtype: int64
+    
+Loan['Dependents'].describe()
+  
+    count    599.000000
+    mean       0.846411
+    std        1.217123
+    min        0.000000
+    25%        0.000000
+    50%        0.000000
+    75%        2.000000
+    max        4.000000
+    Name: Dependents, dtype: float64
+ 
 ```
 3) People with "0" dependent expects to get their loan approved
 
