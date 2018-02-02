@@ -62,6 +62,7 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 
 ```python  
   Loan['Gender'].describe()
+  
   count      614
   unique       2
   top       Male
@@ -74,6 +75,7 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 ```python
    
 Loan['Education'].describe()
+
     count          614
     unique           2
     top       Graduate
@@ -101,7 +103,8 @@ Loan['Education'].describe()
 
 ```python
 
-Loan['Married'].describe()    
+Loan['Married'].describe()
+
     count     611
     unique      2
     top       Yes
@@ -109,11 +112,12 @@ Loan['Married'].describe()
     Name: Married, dtype: object
     
 ```
-4) In the observation Number of married people is more which clearly signifies that married people are inclined towards taking loan
+4) In the observation count of married people is more. The same clearly signifies that married people are inclined towards taking loan
 
 ```python
    
 Loan['Self_Employed'].describe()
+
     count     614
     unique      2
     top        No
@@ -121,11 +125,12 @@ Loan['Self_Employed'].describe()
     Name: Self_Employed, dtype: object
     
 ```
-5) People who are self employed are not so comfortable or sure in applying for the loan  
+5 ) Self employed people are not so comfortable in applying for the loan as they are not sure of paying it back. 
 
 ```python
     
 Loan['Property_Area'].describe()
+
     count           614
     unique            3
     top       Semiurban
@@ -135,11 +140,18 @@ Loan['Property_Area'].describe()
 6) People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
 
 ```python
-Loan['Loan_Status'].value_counts()
+Loan['Loan_Status'].describe()
 
-    Y    422
-    N    192
-    Name: Loan_Status, dtype: int64
+    mean       0.687296
+    std        0.463973
+    min        0.000000
+    25%        0.000000
+    50%        1.000000
+    75%        1.000000
+    max        1.000000
+    Name: Loan_Status, dtype: float64
+
+
 ```
 7) Most of the loan applications have been approved.
 
