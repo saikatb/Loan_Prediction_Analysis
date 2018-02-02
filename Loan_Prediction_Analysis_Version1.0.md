@@ -76,6 +76,13 @@ Loan['Education'].value_counts()
     Graduate        480
     Not Graduate    134
     Name: Education, dtype: int64
+    
+Loan['Education'].describe()
+    count          614
+    unique           2
+    top       Graduate
+    freq           480
+    Name: Education, dtype: object
 ```
 2) There are more number of Graduates present among those who have applied for the Loan 
 
@@ -107,29 +114,49 @@ Loan['Dependents'].describe()
 
 ```python
 Loan['Married'].value_counts()
-
     Yes    398
     No     213
     Name: Married, dtype: int64
+
+Loan['Married'].describe()    
+    count     611
+    unique      2
+    top       Yes
+    freq      398
+    Name: Married, dtype: object
+    
 ```
 4) In the observation Number of married people is more which clearly signifies that married people are inclined towards taking loan
 
 ```python
 Loan['Self_Employed'].value_counts()
-
     No     532
     Yes     82
     Name: Self_Employed, dtype: int64
+    
+Loan['Self_Employed'].describe()
+    count     614
+    unique      2
+    top        No
+    freq      532
+    Name: Self_Employed, dtype: object
+    
 ```
 5) People who are self employed are not so comfortable or sure in applying for the loan  
 
 ```python
 Loan['Property_Area'].value_counts()
-
     Semiurban    233
     Urban        202
     Rural        179
     Name: Property_Area, dtype: int64
+    
+Loan['Property_Area'].describe()
+    count           614
+    unique            3
+    top       Semiurban
+    freq            233
+    Name: Property_Area, dtype: object
 ```
 6) People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
 
