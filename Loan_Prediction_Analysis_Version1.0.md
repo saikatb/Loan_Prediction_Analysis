@@ -803,8 +803,6 @@ df_algo_max_min.set_index('Accuracy Value',inplace=True)
 df_algo_max_min.head()
 ```
 
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
