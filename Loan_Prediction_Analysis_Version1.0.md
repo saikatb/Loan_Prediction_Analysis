@@ -682,8 +682,9 @@ for t in test_size:
     plt.title('Plot Accuracy Vs Testsize Using Random Forrest')
 ```
 
-
 ![png](output_65_1.png)
+
+**Comparing accuracies of different models with respect to sample sizes**
 
 A dataframe df has been craeted with the values of accuruacies of different models and different test sizes. This dataframe will contain the accuracies against the test sizes.
 
