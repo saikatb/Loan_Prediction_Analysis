@@ -855,6 +855,8 @@ The maximum and minimum values of the dataframe has been plotted in a single fra
     ax.set_ylabel("Algo")
 ```
 
+**Normal distribution of different modesl**
+
 ![png](output_69_1.png)
 
 
@@ -891,6 +893,12 @@ The maximum and minimum values of the dataframe has been plotted in a single fra
 ```
 
 ![png](output_74_1.png)
+
+**Comaprative analysis of different models using pair plot**
+
+From the below graph it is highly evident that the values of the acccuracies of Logistic Regression and Support Vector Machine are highly positively correlated.
+
+Random forest has a negative correlation with all other predictive models. 
 
 ```python
     sns.pairplot(df)
