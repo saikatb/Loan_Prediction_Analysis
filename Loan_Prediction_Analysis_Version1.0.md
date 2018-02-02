@@ -1,7 +1,7 @@
 
 **Loading python Libraries**
 
-    ```python
+```python
     
         import numpy as np
         import pandas as pd
@@ -9,15 +9,14 @@
         import seaborn as sns
         sns.set_style('whitegrid')
         %matplotlib inline
-        
-    ```
+```
 **Loading the dataset**
 
 The csv file has been loaded into the dataframe "Loan"
 
-    ```python
+ ```python
         Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
-    ```
+ ```
 
 The dataset has total 13 columns and 614 rows
 
