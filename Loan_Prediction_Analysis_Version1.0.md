@@ -61,12 +61,12 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 **Univariate Analysis** 
 
 
-```python
-Loan['Gender'].value_counts()
-
-    Male      502
-    Female    112
-    Name: Gender, dtype: int64
+```python                                               Loan['Gender'].describe()
+Loan['Gender'].value_counts()                           count      614
+    Male      502                                       unique       2
+    Female    112                                       top       Male
+    Name: Gender, dtype: int64                          freq       502
+                                                        Name: Gender, dtype: object
 ```
 1) Number of "Male" is more in the observation
 
