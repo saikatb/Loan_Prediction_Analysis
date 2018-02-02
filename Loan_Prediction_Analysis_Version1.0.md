@@ -61,22 +61,18 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 **Univariate Analysis** 
 
 ```python  
-                                                        Loan['Gender'].describe()
-Loan['Gender'].value_counts()                           count      614
-    Male      502                                       unique       2
-    Female    112                                       top       Male
-    Name: Gender, dtype: int64                          freq       502
-                                                        Name: Gender, dtype: object
+  Loan['Gender'].describe()
+  count      614
+  unique       2
+  top       Male
+  freq       502
+  Name: Gender, dtype: object
+  
 ```
 1) Number of "Male" is more in the observation
 
 ```python
-Loan['Education'].value_counts()
-
-    Graduate        480
-    Not Graduate    134
-    Name: Education, dtype: int64
-    
+   
 Loan['Education'].describe()
     count          614
     unique           2
@@ -87,17 +83,8 @@ Loan['Education'].describe()
 2) There are more number of Graduates present among those who have applied for the Loan 
 
 ```python
-                    
-Loan['Dependents'].value_counts()                    
-                                                
-    0.0    345                                          
-    1.0    102                                              
-    2.0    101
-    4.0     50
-    3.0      1
-    Name: Dependents, dtype: int64
-    
-Loan['Dependents'].describe()
+                 
+ Loan['Dependents'].describe()
   
     count    599.000000
     mean       0.846411
@@ -113,10 +100,6 @@ Loan['Dependents'].describe()
 3) People with "0" dependent expects to get their loan approved
 
 ```python
-Loan['Married'].value_counts()
-    Yes    398
-    No     213
-    Name: Married, dtype: int64
 
 Loan['Married'].describe()    
     count     611
@@ -129,11 +112,7 @@ Loan['Married'].describe()
 4) In the observation Number of married people is more which clearly signifies that married people are inclined towards taking loan
 
 ```python
-Loan['Self_Employed'].value_counts()
-    No     532
-    Yes     82
-    Name: Self_Employed, dtype: int64
-    
+   
 Loan['Self_Employed'].describe()
     count     614
     unique      2
@@ -145,11 +124,6 @@ Loan['Self_Employed'].describe()
 5) People who are self employed are not so comfortable or sure in applying for the loan  
 
 ```python
-Loan['Property_Area'].value_counts()
-    Semiurban    233
-    Urban        202
-    Rural        179
-    Name: Property_Area, dtype: int64
     
 Loan['Property_Area'].describe()
     count           614
