@@ -231,7 +231,7 @@ Calculating the peercentage of Null values in the dataframe
     Loan_Status          0    0.000000
 ```
 
-So, the maximum number of null values **(8.14 % )** present in the column **Credit_History**. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
+So, the maximum number of null values **(8.14%)** present in the column ***Credit_History***. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
 
 Inspite of that, those null values can be replaced with the suitable values i.e. 0, mean, median or mode.
 
@@ -685,6 +685,7 @@ for t in test_size:
 
 ![png](output_65_1.png)
 
+A dataframe df has been craeted with the values of accuruacies of different models and different test sizes. This dataframe will contain the accuracies against the test sizes.
 
 ```python
     import numpy as np
@@ -768,6 +769,7 @@ for t in test_size:
 </table>
 </div>
 
+The accuracies of different models have been plotted in a single frame where we can see that the random forest model is following a completely different trajectory as compared to other models. On the other hand, the slope of logistic regression and support vector machine goes hand in hand.
 
 ```python
     import plotly.plotly as py
@@ -781,10 +783,9 @@ for t in test_size:
     ax.set_ylabel("Accuracy")
 ```
 
-
 ![png](output_67_1.png)
 
-
+A new dataframe has been created which contains maximum and minium values of the accuracies of the models. 
 
 ```python
 
@@ -841,6 +842,7 @@ for t in test_size:
 </table>
 </div>
 
+The maximum and minimum values of the dataframe has been plotted in a single frame in order to compare the different slopes of different algorithms among each other. From the graph, it can be found that negative slope of the random forest algorithm is way more stipper as compare to other algorithms. The slope of logistic regression and support vector machines are almost equal.
 
 ```python
     import numpy as np
