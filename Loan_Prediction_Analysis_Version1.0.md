@@ -1,28 +1,28 @@
 
 **Loading python Libraries**
 
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set_style('whitegrid')
-%matplotlib inline
-```
+    ```python
+    import numpy as np
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    sns.set_style('whitegrid')
+    %matplotlib inline
+    ```
 **Loading the dataset**
 
 The csv file has been loaded into the dataframe "Loan"
 
-```python
-Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
-```
+    ```python
+    Loan = pd.read_csv('ML_Masterclass_dataset_Dec17.csv')
+    ```
 
 The dataset has total 13 columns and 614 rows
 
-```python
-Loan.shape
-    (614, 13)
-```
+    ```python
+    Loan.shape
+        (614, 13)
+    ```
 
 **Types of Data**
 
@@ -60,14 +60,15 @@ Loan.drop('Loan_ID',axis=1,inplace=True)
 
 **Univariate Analysis** 
 
-```python  
-  Loan['Gender'].describe()
+```
+python  
+    Loan['Gender'].describe()
   
-  count      614
-  unique       2
-  top       Male
-  freq       502
-  Name: Gender, dtype: object
+    count      614
+    unique       2
+    top       Male
+    freq       502
+     Name: Gender, dtype: object
   
 ```
 1) Number of "Male" is more in the observation
@@ -174,13 +175,13 @@ In a nuttshell, the gist of the analysis is as below :
 
 from sklearn.preprocessing import LabelEncoder
 
-        lbl_encoder = LabelEncoder()
-        Loan["Gender"] = lbl_encoder.fit_transform(Loan["Gender"])
-        Loan["Married"] = lbl_encoder.fit_transform(Loan["Married"])
-        Loan["Education"] = lbl_encoder.fit_transform(Loan["Education"])
-        Loan["Self_Employed"] = lbl_encoder.fit_transform(Loan["Self_Employed"])
-        Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
-        Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
+    lbl_encoder = LabelEncoder()
+    Loan["Gender"] = lbl_encoder.fit_transform(Loan["Gender"])
+    Loan["Married"] = lbl_encoder.fit_transform(Loan["Married"])
+    Loan["Education"] = lbl_encoder.fit_transform(Loan["Education"])
+    Loan["Self_Employed"] = lbl_encoder.fit_transform(Loan["Self_Employed"])
+    Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
+    Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
 
@@ -207,26 +208,26 @@ Loan.isnull().sum()
 Calculating the peercentage of Null values in the dataframe
 
 ```python
-        Loan_null = pd.DataFrame((Loan.isnull().sum()),columns=['Null_Values'])
-        Loan_null['%ofNullValeues'] = ((Loan_null['Null_Values'])/614*100).sort_values(ascending=True)
-        Loan_null
-        
-        
-                    Null_Values   %ofNullValeues
-                    
-        Loan_ID              0    0.000000
-        Gender              13    2.117264
-        Married              3    0.488599
-        Dependents          15    2.442997
-        Education            0    0.000000
-        Self_Employed       32    5.211726
-        ApplicantIncome      0    0.000000
-        CoapplicantIncome    0    0.000000
-        LoanAmount          22    3.583062
-        Loan_Amount_Term    14    2.280130
-        Credit_History      50    8.143322
-        Property_Area        0    0.000000
-        Loan_Status          0    0.000000
+    Loan_null = pd.DataFrame((Loan.isnull().sum()),columns=['Null_Values'])
+    Loan_null['%ofNullValeues'] = ((Loan_null['Null_Values'])/614*100).sort_values(ascending=True)
+    Loan_null
+
+
+                Null_Values   %ofNullValeues
+
+    Loan_ID              0    0.000000
+    Gender              13    2.117264
+    Married              3    0.488599
+    Dependents          15    2.442997
+    Education            0    0.000000
+    Self_Employed       32    5.211726
+    ApplicantIncome      0    0.000000
+    CoapplicantIncome    0    0.000000
+    LoanAmount          22    3.583062
+    Loan_Amount_Term    14    2.280130
+    Credit_History      50    8.143322
+    Property_Area        0    0.000000
+    Loan_Status          0    0.000000
 ```
 
 So, the maximum number of null values **(8.14 % )** present in the column **Credit_History**. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
@@ -274,100 +275,99 @@ Loan.info()
 
 Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
 
-```python
-import seaborn as sns
-sns.distplot(Loan['ApplicantIncome'],color='r')
-```
+    ```python
+    import seaborn as sns
+    sns.distplot(Loan['ApplicantIncome'],color='r')
+    ```
 
 ![png](output_27_1.png)
 
 From the above histogram of ***ApplicantIncome*** column we can see that the distribution is heavily positively skewed. 
 Also the ***skewness*** and the ***kurtosis*** is really high as calculated below.
 
-```python
-print("Skewness: %f" % Loan['ApplicantIncome'].skew())
-print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
+    ```python
+    print("Skewness: %f" % Loan['ApplicantIncome'].skew())
+    print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
 
-    Skewness: 6.539513
-    Kurtosis: 60.540676
-```
+        Skewness: 6.539513
+        Kurtosis: 60.540676
+    ```
 
 In order to achieve a more acceptable distribution we took the ***log*** of column ***ApplicantIncome*** and ploted the histogram.
 From the below graph it can infered that heavily skewed distribution has been replaced by a reasonable normal distribution.
 
-```python
-import seaborn as sns
-import numpy as np
-sns.distplot(np.log(Loan['ApplicantIncome']),color='b')
-```
+    ```python
+    import seaborn as sns
+    import numpy as np
+    sns.distplot(np.log(Loan['ApplicantIncome']),color='b')
+    ```
 
 ![png](output_29_1.png)
 
-```python
-print("Skewness: %f" % np.log(Loan['ApplicantIncome']).skew())
-print("Kurtosis: %f" % np.log(Loan['ApplicantIncome']).kurt())
+    ```python
+    print("Skewness: %f" % np.log(Loan['ApplicantIncome']).skew())
+    print("Kurtosis: %f" % np.log(Loan['ApplicantIncome']).kurt())
 
-    Skewness: 0.479580
-    Kurtosis: 3.686875
-```
+        Skewness: 0.479580
+        Kurtosis: 3.686875
+    ```
 
 From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
 
-```python
-import seaborn as sns
-sns.distplot(Loan['LoanAmount'],color='r')
-```
+    ```python
+    import seaborn as sns
+    sns.distplot(Loan['LoanAmount'],color='r')
+    ```
 
 ![png](output_31_1.png)
 
 
-```python
-print("Skewness: %f" % Loan['LoanAmount'].skew())
-print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
+    ```python
+    print("Skewness: %f" % Loan['LoanAmount'].skew())
+    print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
 
-    Skewness: 2.726601
-    Kurtosis: 10.896456
-```
+        Skewness: 2.726601
+        Kurtosis: 10.896456
+    ```
 
 So to make the distribution look more normal again the same procedure has been followed.
 
-```python
-import seaborn as sns
-import numpy as np
-sns.distplot(np.log(Loan['LoanAmount']),color='b')
-```
+    ```python
+    import seaborn as sns
+    import numpy as np
+    sns.distplot(np.log(Loan['LoanAmount']),color='b')
+    ```
 
 ![png](output_33_1.png)
 
 The distribution is slightly negatively skewed
 
-```python
-print("Skewness: %f" % np.log(Loan['LoanAmount']).skew())
-print("Kurtosis: %f" % np.log(Loan['LoanAmount']).kurt())
-```
+    ```python
+    print("Skewness: %f" % np.log(Loan['LoanAmount']).skew())
+    print("Kurtosis: %f" % np.log(Loan['LoanAmount']).kurt())
+    ```
 
     Skewness: -0.223227
     Kurtosis: 2.799973
     
 
-```python
-import seaborn as sns
-sns.distplot(Loan['CoapplicantIncome'],color='r')
-```
+    ```python
+    import seaborn as sns
+    sns.distplot(Loan['CoapplicantIncome'],color='r')
+    ```
 
 ![png](output_36_1.png)
 
 
-
-```python
-Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
-```
+    ```python
+    Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
+    ```
 The value 0 has been replaced with 1 as log(0) is undefined and we wont able to plot the histogram.
 
-```python
-import seaborn as sns
-sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
-```
+    ```python
+    import seaborn as sns
+    sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
+    ```
 
 ![png](output_39_1.png)
 
@@ -379,17 +379,17 @@ Frome the above distribution of the log value of CoapplicantIncome it has been f
 In multivariate analysis we tried to figure out the pearson correlation coefficient among different columns using a heatmap.
 
 ```python
-corr=Loan.corr()#["Loan_Status"]
-plt.figure(figsize=(12, 8))
+    corr=Loan.corr()#["Loan_Status"]
+    plt.figure(figsize=(12, 8))
 
-sns.heatmap(corr, 
-            vmax=.8, 
-            linewidths=0.01,
-            square=True,
-            annot=True,
-            cmap='Blues',
-            linecolor="lightblue")
-plt.title('Correlation between features');
+    sns.heatmap(corr, 
+                vmax=.8, 
+                linewidths=0.01,
+                square=True,
+                annot=True,
+                cmap='Blues',
+                linecolor="lightblue")
+    plt.title('Correlation between features');
 ```
 
 
@@ -412,30 +412,30 @@ Below is the dataset after normalizing the scale of all the columns from 0 to 1.
 Below python code has been used in order to implement the normalization in the present dataset.
 
 ```python
-        from sklearn import preprocessing
-        import pandas as pd
-        x = Loan.values 
-        min_max_scaler = preprocessing.MinMaxScaler()
-        x_scaled = min_max_scaler.fit_transform(x)
-        Loan_Norm = pd.DataFrame(x_scaled)
+    from sklearn import preprocessing
+    import pandas as pd
+    x = Loan.values 
+    min_max_scaler = preprocessing.MinMaxScaler()
+    x_scaled = min_max_scaler.fit_transform(x)
+    Loan_Norm = pd.DataFrame(x_scaled)
 
-        Loan_Norm.columns = ['Gender_Norm', 'Married_Norm', 'Dependents_Norm', 'Education_Norm', 'Self_Employed_Norm',           'ApplicantIncome_Norm', 'CoapplicantIncome_Norm', 'LoanAmount_Norm', 'Loan_Amount_Term_Norm', 'Credit_History_Norm', 'Property_Area_Norm', 'Loan_Status_Norm']
+    Loan_Norm.columns = ['Gender_Norm', 'Married_Norm', 'Dependents_Norm', 'Education_Norm', 'Self_Employed_Norm',           'ApplicantIncome_Norm', 'CoapplicantIncome_Norm', 'LoanAmount_Norm', 'Loan_Amount_Term_Norm', 'Credit_History_Norm', 'Property_Area_Norm', 'Loan_Status_Norm']
 
 ```
 Heatmap plot after doing the normalizing the scale of all the columns in between range 0 and 1
 
 ```python
-        corr=Loan_Norm.corr()
-        plt.figure(figsize=(12, 8))
+    corr=Loan_Norm.corr()
+    plt.figure(figsize=(12, 8))
 
-        sns.heatmap(corr, 
-                    vmax=.8, 
-                    linewidths=0.01,
-                    square=True,
-                    annot=True,
-                    cmap='Blues',
-                    linecolor="lightblue")
-        plt.title('Correlation between features with Normalization');
+    sns.heatmap(corr, 
+                vmax=.8, 
+                linewidths=0.01,
+                square=True,
+                annot=True,
+                cmap='Blues',
+                linecolor="lightblue")
+    plt.title('Correlation between features with Normalization');
 ```
 ![png](output_76_1.png)
 
@@ -448,15 +448,14 @@ Even though the scale has been normalized in a scale of 0 and 1, no significant 
 Before splitting the dataframe dataframe has been splitted into seperate dataframe. One datframe(Y) will have the target variable i.e. ***Loan_Status*** and the other (X) will contain the rest of the independent variables. 
 
 ```python
-Y = Loan['Loan_Status']
-X = pd.concat([Loan['Gender'], Loan['Married'], Loan['Dependents'], Loan['Education'], Loan['Self_Employed'], Loan['ApplicantIncome'], Loan['CoapplicantIncome'], Loan['LoanAmount'], Loan['Loan_Amount_Term'], Loan['Credit_History'], Loan['Property_Area']],axis=1) 
+    Y = Loan['Loan_Status']
+    X = pd.concat([Loan['Gender'], Loan['Married'], Loan['Dependents'], Loan['Education'], Loan['Self_Employed'], Loan['ApplicantIncome'], Loan['CoapplicantIncome'], Loan['LoanAmount'], Loan['Loan_Amount_Term'], Loan['Credit_History'], Loan['Property_Area']],axis=1) 
 ```
 
 ```python
-Y.shape, X.shape
+    Y.shape, X.shape
 ```
     ((614L,), (614, 11))
-
 
 Below are the models been used to predict the status of the loan. ( whether it is issued or not ? )
 
@@ -473,17 +472,17 @@ Graphs have been plotted against test sizes and accuracies for all the above-men
 
 ```python
 
-import numpy as np
-#from array import array
-from sklearn.linear_model import LogisticRegression
-from sklearn.cross_validation import train_test_split
-from sklearn import metrics
+    import numpy as np
+    #from array import array
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.cross_validation import train_test_split
+    from sklearn import metrics
 
-test_size = np.arange(0.01,1,0.01)
-accuracyl = []
+    test_size = np.arange(0.01,1,0.01)
+    accuracyl = []
 
 
-for t in test_size:
+    for t in test_size:
 
     logreg = LogisticRegression()
     X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=t, random_state = 3)
@@ -496,11 +495,11 @@ for t in test_size:
     Y_pred_logreg = logreg.predict(X_test)
     accuracyl.append(metrics.accuracy_score(Y_test,Y_pred_logreg))
 
-plt.figure(figsize=(10,5))
-plt.plot(test_size,accuracyl,color='b')
-plt.xlabel('Sample Test Size')
-plt.ylabel('Testing Accuracy')
-plt.title('Plot Accuracy Vs Testsize Using Logisitic Regression')
+    plt.figure(figsize=(10,5))
+    plt.plot(test_size,accuracyl,color='b')
+    plt.xlabel('Sample Test Size')
+    plt.ylabel('Testing Accuracy')
+    plt.title('Plot Accuracy Vs Testsize Using Logisitic Regression')
 
 ```
 
@@ -510,10 +509,10 @@ plt.title('Plot Accuracy Vs Testsize Using Logisitic Regression')
 **Support Vector Machine** 
 
 ```python
-from sklearn.svm import SVC
-from sklearn import metrics
+    from sklearn.svm import SVC
+    from sklearn import metrics
 
-accuracys = []
+    accuracys = []
 
 for t in test_size:
 
@@ -527,11 +526,11 @@ for t in test_size:
     Y_pred_SVC = model.predict(X_test)
     accuracys.append(metrics.accuracy_score(Y_test,Y_pred_SVC))
     
-plt.figure(figsize=(10,5))
-plt.plot(test_size,accuracys,color='g')
-plt.xlabel('Sample Test Size')
-plt.ylabel('Testing Accuracy')
-plt.title('Plot Accuracy Vs Testsize Using Support Vector Machine')
+    plt.figure(figsize=(10,5))
+    plt.plot(test_size,accuracys,color='g')
+    plt.xlabel('Sample Test Size')
+    plt.ylabel('Testing Accuracy')
+    plt.title('Plot Accuracy Vs Testsize Using Support Vector Machine')
 ```
 
 ![png](output_62_1.png)
@@ -540,19 +539,19 @@ plt.title('Plot Accuracy Vs Testsize Using Support Vector Machine')
 
 ```python
 
-import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
+    import numpy as np
+    from sklearn.neighbors import KNeighborsClassifier
 
-test_size = np.arange(0.01,1,0.01)
+    test_size = np.arange(0.01,1,0.01)
 
-accuracyk1 = []
-accuracyk2 = []
-accuracyk3 = []
-accuracyk4 = []
-accuracyk5 = []
-accuracyk6 = []
+    accuracyk1 = []
+    accuracyk2 = []
+    accuracyk3 = []
+    accuracyk4 = []
+    accuracyk5 = []
+    accuracyk6 = []
 
-for t in test_size:
+    for t in test_size:
     
     X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=t, random_state = 3)
     X_train = X_train.reset_index(drop=True)
@@ -596,24 +595,24 @@ for t in test_size:
     Y_pred_knn6 = knn6.predict(X_test)
     accuracyk6.append(metrics.accuracy_score(Y_test,Y_pred_knn6))
 
-plt.figure(figsize=(15,7))
-plt.xlabel('Sample Test Size')
-plt.ylabel('Testing Accuracy')
-plt.title('Plot Accuracy Vs Testsize Using K Nearest Neighbour with neighbours = 1,2,3,4,5,6,7')
+    plt.figure(figsize=(15,7))
+    plt.xlabel('Sample Test Size')
+    plt.ylabel('Testing Accuracy')
+    plt.title('Plot Accuracy Vs Testsize Using K Nearest Neighbour with neighbours = 1,2,3,4,5,6')
 
-ax1 = plt.plot(test_size,accuracyk1,color='red')
-ax2 = plt.plot(test_size,accuracyk2,color='blue')
-ax3 = plt.plot(test_size,accuracyk3,color='green')
-ax4 = plt.plot(test_size,accuracyk4,color='grey')
-ax5 = plt.plot(test_size,accuracyk5,color='brown')
-ax6 = plt.plot(test_size,accuracyk6,color='yellow')
+    ax1 = plt.plot(test_size,accuracyk1,color='red')
+    ax2 = plt.plot(test_size,accuracyk2,color='blue')
+    ax3 = plt.plot(test_size,accuracyk3,color='green')
+    ax4 = plt.plot(test_size,accuracyk4,color='grey')
+    ax5 = plt.plot(test_size,accuracyk5,color='brown')
+    ax6 = plt.plot(test_size,accuracyk6,color='yellow')
 
-plt.figtext(0.6,0.8, "red, neighbour = 1")
-plt.figtext(0.6,0.77, "blue, neighbour = 2")
-plt.figtext(0.6,0.74, "green, neighbour = 3")
-plt.figtext(0.6,0.71, "grey, neighbour = 4")
-plt.figtext(0.6,0.68, "brown, neighbour = 5")
-plt.figtext(0.6,0.65, "yellow, neighbour = 6")
+    plt.figtext(0.6,0.8, "red, neighbour = 1")
+    plt.figtext(0.6,0.77, "blue, neighbour = 2")
+    plt.figtext(0.6,0.74, "green, neighbour = 3")
+    plt.figtext(0.6,0.71, "grey, neighbour = 4")
+    plt.figtext(0.6,0.68, "brown, neighbour = 5")
+    plt.figtext(0.6,0.65, "yellow, neighbour = 6")
 ```
 
 ![png](output_63_1.png)
@@ -622,14 +621,14 @@ plt.figtext(0.6,0.65, "yellow, neighbour = 6")
 
 ```python
 
-import numpy as np
-from sklearn.naive_bayes import GaussianNB
-from sklearn.cross_validation import train_test_split
+    import numpy as np
+    from sklearn.naive_bayes import GaussianNB
+    from sklearn.cross_validation import train_test_split
 
-test_size = np.arange(0.01,1,0.01)
-accuracyn = []
+    test_size = np.arange(0.01,1,0.01)
+    accuracyn = []
 
-for t in test_size:
+    for t in test_size:
     
     model = GaussianNB()
     X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=t, random_state = 3)
@@ -642,11 +641,11 @@ for t in test_size:
     Y_pred_NB = model.predict(X_test)
     accuracyn.append(metrics.accuracy_score(Y_test,Y_pred_NB))
 
-plt.figure(figsize=(10,5))
-plt.plot(test_size,accuracyn,color='purple')
-plt.xlabel('Sample Test Size')
-plt.ylabel('Testing Accuracy')
-plt.title('Plot Accuracy Vs Testsize Using Naive Bayes')
+    plt.figure(figsize=(10,5))
+    plt.plot(test_size,accuracyn,color='purple')
+    plt.xlabel('Sample Test Size')
+    plt.ylabel('Testing Accuracy')
+    plt.title('Plot Accuracy Vs Testsize Using Naive Bayes')
 ```
 
 ![png](output_64_1.png)
@@ -655,14 +654,14 @@ plt.title('Plot Accuracy Vs Testsize Using Naive Bayes')
 
 ```python
 
-import numpy as np
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.cross_validation import train_test_split
+    import numpy as np
+    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.cross_validation import train_test_split
 
-test_size = np.arange(0.01,1,0.01)
-accuracyrf = []
+    test_size = np.arange(0.01,1,0.01)
+    accuracyrf = []
 
-for t in test_size:
+    for t in test_size:
     
     rfr = RandomForestRegressor() 
     X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=t, random_state = 3)
@@ -675,11 +674,11 @@ for t in test_size:
     Y_pred_RFR = rfr.predict(X_test)
     accuracyrf.append(metrics.accuracy_score(Y_test,Y_pred_RFR.astype(int)))
     
-plt.figure(figsize=(10,5))
-plt.plot(test_size,accuracyrf,color='seagreen')
-plt.xlabel('Sample Test Size')
-plt.ylabel('Testing Accuracy')
-plt.title('Plot Accuracy Vs Testsize Using Random Forrest')
+    plt.figure(figsize=(10,5))
+    plt.plot(test_size,accuracyrf,color='seagreen')
+    plt.xlabel('Sample Test Size')
+    plt.ylabel('Testing Accuracy')
+    plt.title('Plot Accuracy Vs Testsize Using Random Forrest')
 ```
 
 
@@ -687,24 +686,22 @@ plt.title('Plot Accuracy Vs Testsize Using Random Forrest')
 
 
 ```python
-import numpy as np
-import pandas as pd
+    import numpy as np
+    import pandas as pd
 
-t = test_size
+    t = test_size
 
-l = accuracyl
-s = accuracys
-k5 = accuracyk5
-n = accuracyn
-rf = accuracyrf
+    l = accuracyl
+    s = accuracys
+    k5 = accuracyk5
+    n = accuracyn
+    rf = accuracyrf
 
-df = pd.DataFrame({'test_size':t, 'Logistic Regression':l, 'Support Vector Machine':s, 'k Nearrest Neighbor=5':k5, 'Naive Bayes':n, 'Random Forest':rf})
-df.set_index('test_size',inplace=True)
-df.head()
+    df = pd.DataFrame({'test_size':t, 'Logistic Regression':l, 'Support Vector Machine':s, 'k Nearrest Neighbor=5':k5, 'Naive Bayes':n, 'Random Forest':rf})
+    df.set_index('test_size',inplace=True)
+    df.head()
 
 ```
-
-
 
 <table border="1" class="dataframe">
   <thead>
@@ -772,15 +769,15 @@ df.head()
 
 
 ```python
-import plotly.plotly as py
-import plotly.graph_objs as go
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+    import plotly.plotly as py
+    import plotly.graph_objs as go
+    import numpy as np
+    import pandas as pd
+    import matplotlib.pyplot as plt
 
-ax = df.plot(legend=True, figsize=(12,6),linestyle='--',marker='o', title='TestSize Vs Accuracy with differnt Algorithms')
-ax.set_xlabel("Test Size")
-ax.set_ylabel("Accuracy")
+    ax = df.plot(legend=True, figsize=(12,6),linestyle='--',marker='o', title='TestSize Vs Accuracy with differnt Algorithms')
+    ax.set_xlabel("Test Size")
+    ax.set_ylabel("Accuracy")
 ```
 
 
@@ -790,17 +787,17 @@ ax.set_ylabel("Accuracy")
 
 ```python
 
-LG = [df['Logistic Regression'].max(),df['Logistic Regression'].min()]
-NB = [df['Naive Bayes'].max(),df['Naive Bayes'].min()]
-RF = [df['Random Forest'].max(),df['Random Forest'].min()]
-KNN = [df['k Nearrest Neighbor=5'].max(),df['k Nearrest Neighbor=5'].min()]
-SVM = [df['Support Vector Machine'].max(),df['Support Vector Machine'].min()]
+    LG = [df['Logistic Regression'].max(),df['Logistic Regression'].min()]
+    NB = [df['Naive Bayes'].max(),df['Naive Bayes'].min()]
+    RF = [df['Random Forest'].max(),df['Random Forest'].min()]
+    KNN = [df['k Nearrest Neighbor=5'].max(),df['k Nearrest Neighbor=5'].min()]
+    SVM = [df['Support Vector Machine'].max(),df['Support Vector Machine'].min()]
 
-Measure = ['Max','Min']
+    Measure = ['Max','Min']
 
-df_algo_max_min = pd.DataFrame({'Accuracy Value':Measure, 'Logistic Regression':LG, 'Naive Bayes':NB, 'Support Vector Machine':SVM, 'k Nearrest Neighbor=5':KNN, 'Random Forest':RF})
-df_algo_max_min.set_index('Accuracy Value',inplace=True)
-df_algo_max_min.head()
+    df_algo_max_min = pd.DataFrame({'Accuracy Value':Measure, 'Logistic Regression':LG, 'Naive Bayes':NB, 'Support Vector Machine':SVM, 'k Nearrest Neighbor=5':KNN, 'Random Forest':RF})
+    df_algo_max_min.set_index('Accuracy Value',inplace=True)
+    df_algo_max_min.head()
 ```
 
 <table border="1" class="dataframe">
@@ -845,63 +842,55 @@ df_algo_max_min.head()
 
 
 ```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+    import numpy as np
+    import pandas as pd
+    import matplotlib.pyplot as plt
 
-ax = df_algo_max_min.plot(legend=True, figsize=(10,7),linestyle='--',marker='o', title='Accuracy with differnt Algorithms')
-ax.set_xlabel("Accuracy_Value")
-ax.set_ylabel("Algo")
+    ax = df_algo_max_min.plot(legend=True, figsize=(10,7),linestyle='--',marker='o', title='Accuracy with differnt Algorithms')
+    ax.set_xlabel("Accuracy_Value")
+    ax.set_ylabel("Algo")
 ```
 
 ![png](output_69_1.png)
 
 
 ```python
-import seaborn as sns
-sns.distplot(df['Logistic Regression'])
+    import seaborn as sns
+    sns.distplot(df['Logistic Regression'])
 ```
 ![png](output_70_1.png)
 
 ```python
-import seaborn as sns
-sns.distplot(df['Naive Bayes'])
+    import seaborn as sns
+    sns.distplot(df['Naive Bayes'])
 ```
 
 ![png](output_71_1.png)
 
 ```python
-import seaborn as sns
-sns.distplot(df['Random Forest'])
+    import seaborn as sns
+    sns.distplot(df['Random Forest'])
 ```
 
 ![png](output_72_1.png)
 
-
-
 ```python
-import seaborn as sns
-sns.distplot(df['Support Vector Machine'])
+    import seaborn as sns
+    sns.distplot(df['Support Vector Machine'])
 ```
 
 ![png](output_73_1.png)
 
-
-
 ```python
-import seaborn as sns
-sns.distplot(df['k Nearrest Neighbor=5'])
+    import seaborn as sns
+    sns.distplot(df['k Nearrest Neighbor=5'])
 ```
 
 ![png](output_74_1.png)
 
 ```python
-sns.pairplot(df)
+    sns.pairplot(df)
 ```
-
 ![png](output_75_1.png)
 
 
-```python
-
-```
