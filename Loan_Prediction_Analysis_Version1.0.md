@@ -8,7 +8,7 @@ Below is my plan with which i would like to stick to if i want to do the datasci
 3) Exploratory Data Analysis (EDA)
 4) Features Engineering & Data Munging
 5) Selecting Modeling Algorithm
-6) Comparitive Analysis of the models
+6) Comparing different models
 
 
 # 1) Understanding Dataset
@@ -471,8 +471,20 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
 
 Even though the scale has been normalized in a scale of 0 and 1, no significant differences have been found in the pearson correlation coefficients between multple independent variables. Henceforth, it can be concluded that normalization did not play any significant role in data preprocessing.
 
+# 5) Selecting Modeling Algorithm
 
-**Splittig the dataframe in training and test sample**
+Below are the models been used to predict the status of the loan. ( whether it is issued or not ? )
+
+   1) Logistic Regression
+   2) Support Vector Machine
+   3) K Nearest Neighbour 
+   4) Naive Bayes
+   5) Random Forrest
+   
+An effort has been made to find out the accuracies for all the possible test size from 0.01 to 0.99 for a specific model. 
+Graphs have been plotted against test sizes and accuracies for all the above-mentioned models and eventually been compared by plotting them in a single frame.
+
+**Splittig the dataframe in training and test sample and choosing different algorithms**
 
 Before splitting the dataframe dataframe has been splitted into seperate dataframe. One datframe(Y) will have the target variable i.e. ***Loan_Status*** and the other (X) will contain the rest of the independent variables. 
 
@@ -486,16 +498,6 @@ Before splitting the dataframe dataframe has been splitted into seperate datafra
 ```
     ((614L,), (614, 11))
 
-Below are the models been used to predict the status of the loan. ( whether it is issued or not ? )
-
-   1) Logistic Regression
-   2) Support Vector Machine
-   3) K Nearest Neighbour 
-   4) Naive Bayes
-   5) Random Forrest
-
-An effort has been made to find out the accuracies for all the possible test size from 0.01 to 0.99 for a specific model. 
-Graphs have been plotted against test sizes and accuracies for all the above-mentioned models and eventually been compared by plotting them in a single frame.
 
 **Logistic Regression** 
 
@@ -711,6 +713,8 @@ for t in test_size:
 ```
 
 ![png](output_65_1.png)
+
+# 6) Comparing different models
 
 **Comparing accuracies of different models with respect to sample sizes**
 
