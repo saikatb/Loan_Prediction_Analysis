@@ -251,8 +251,8 @@ In a nuttshell, the gist of the analysis is as below :
 
 **Further analysis gave us following points:**
 
-```
-Loan.groupby(['Gender','Loan_Status'])['Education'].count()
+```python
+   Loan.groupby(['Gender','Loan_Status'])['Education'].count()
 
     Gender  Loan_Status
     Female  N               37
@@ -263,8 +263,8 @@ Loan.groupby(['Gender','Loan_Status'])['Education'].count()
 ```
    8) More number of male applicants' loans got approved as compated to female applicants.
 
-```
-Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
+```python
+   Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
 
     Education     Loan_Status
     Graduate      N              140
@@ -301,7 +301,7 @@ Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
   11) More number of Loan term amount of 360 got approved.
   
 ```python
-  Loan.groupby(['Loan_Amount_Term','Loan_Status'])['Loan_Status'].count()
+   Loan.groupby(['Loan_Amount_Term','Loan_Status'])['Loan_Status'].count()
   
         Loan_Amount_Term  Loan_Status
     12.0              Y                1
