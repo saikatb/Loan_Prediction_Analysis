@@ -6,9 +6,8 @@ Below is my plan with which i would like to stick to if i want to do the datasci
 1) Understanding Dataset
 2) Data preprocessing
 3) Exploratory Data Analysis (EDA)
-4) Features Engineering & Data Munging
-5) Selecting Modeling Algorithm
-6) Comparing different models
+4) Selecting Modeling Algorithm
+5) Comparing different models
 
 
 # 1) Understanding Dataset
@@ -211,7 +210,7 @@ Loan.info()
 # 3) Extrapolatory Data Analysis
 
 Bar plots have been used in order to dig into the datsets to extract the hidden information.
-Below are the barplots of 
+Below are the barplots of several independent and dependent variables.
 
 ```python
     f,ax=plt.subplots(2,3,figsize=(12,12))
@@ -397,7 +396,6 @@ From the below plot of normal distribution of ***LoanAmount*** we can infer that
 
 ![png](output_31_1.png)
 
-
     ```python
     print("Skewness: %f" % Loan['LoanAmount'].skew())
     print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
@@ -518,11 +516,7 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
 
 Even though the scale has been normalized in a scale of 0 and 1, no significant differences have been found in the pearson correlation coefficients between multple independent variables. Henceforth, it can be concluded that normalization did not play any significant role in data preprocessing.
 
-# 4) Feature Engineering & Data Munging
-   
-   Feature engineering or data munging has not been done in this analysis.
-
-# 5) Selecting Modeling Algorithm
+# 4) Selecting Modeling Algorithm
 
 Below are the models been used to predict the status of the loan. ( whether it is issued or not ? )
 
@@ -765,7 +759,7 @@ for t in test_size:
 
 ![png](output_65_1.png)
 
-# 6) Comparing different models
+# 5) Comparing different models
 
 **Comparing accuracies of different models with respect to sample sizes**
 
