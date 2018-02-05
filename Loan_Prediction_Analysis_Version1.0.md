@@ -959,7 +959,7 @@ If we will use all above mentioned 5 models with the normalized version of the d
 
 ![png](output_80_1.png)
 
-From the above plots it can be clearly concluded that after normalization logsitc regression, Naive Bayes,Support Vector Machine, and K nearest neighbour=5 all these 5 models' accuracies changed almost in the same rate along with the the test size.
+From the above plots it can be clearly concluded that after normalization logsitc regression, Naive Bayes,Support Vector Machine, and K nearest neighbour=5 all these 5 models' accuracies changed almost in the same rate as of test sizes.
 
 Random Forest model remained an anomaly in this case.
 
@@ -984,7 +984,7 @@ Below is thet plot of normla distribution of the accuracies of several models.
 
 ![png](output_79_1.png)
 
-**Comaprative analysis of different models using pair plot before normalization **
+**Comaprative analysis of different models using pair plot before normalization**
 
 From the below graph it is highly evident that the values of the acccuracies of Logistic Regression and Support Vector Machine are highly positively correlated.
 
@@ -995,7 +995,7 @@ Random forest has a negative correlation with all other predictive models.
 ```
 ![png](output_75_1.png)
 
-**Comaprative analysis of different models using pair plot after normalization **
+**Comaprative analysis of different models using pair plot after normalization**
 
 From the below graph it is highly evident that the values of the acccuracies of Logistic Regression, Support Vector Machine, Naive Bayes and K nearest neighbout=5 are all more or less positively correlated among each other.
 
