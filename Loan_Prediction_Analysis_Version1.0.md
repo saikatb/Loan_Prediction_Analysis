@@ -871,15 +871,15 @@ A dataframe df has been craeted with the values of accuruacies of different mode
 The accuracies of different models have been plotted in a single frame where we can see that the random forest model is following a completely different trajectory as compared to other models. On the other hand, the slope of logistic regression and support vector machine goes hand in hand.
 
 ```python
-    import plotly.plotly as py
-    import plotly.graph_objs as go
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
+   import plotly.plotly as py
+   import plotly.graph_objs as go
+   import numpy as np
+   import pandas as pd
+   import matplotlib.pyplot as plt
 
-    ax = df.plot(legend=True, figsize=(12,6),linestyle='--',marker='o', title='TestSize Vs Accuracy with differnt Algorithms')
-    ax.set_xlabel("Test Size")
-    ax.set_ylabel("Accuracy")
+   ax = df.plot(legend=True, figsize=(12,6),linestyle='--',marker='o', title='TestSize Vs Accuracy with differnt Algorithms')
+   ax.set_xlabel("Test Size")
+   ax.set_ylabel("Accuracy")
 ```
 
 ![png](output_67_1.png)
@@ -944,13 +944,13 @@ A new dataframe has been created which contains maximum and minium values of the
 The maximum and minimum values of the dataframe has been plotted in a single frame in order to compare the different slopes of different algorithms among each other. From the graph, it can be found that negative slope of the random forest algorithm is way more stipper as compare to other algorithms. The slope of logistic regression and support vector machines are almost equal.
 
 ```python
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
+   import numpy as np
+   import pandas as pd
+   import matplotlib.pyplot as plt
 
-    ax = df_algo_max_min.plot(legend=True, figsize=(10,7),linestyle='--',marker='o', title='Accuracy with differnt Algorithms')
-    ax.set_xlabel("Accuracy_Value")
-    ax.set_ylabel("Algo")
+   ax = df_algo_max_min.plot(legend=True, figsize=(10,7),linestyle='--',marker='o', title='Accuracy with differnt Algorithms')
+   ax.set_xlabel("Accuracy_Value")
+   ax.set_ylabel("Algo")
 ```
 
 ![png](output_69_1.png)
@@ -959,6 +959,9 @@ If we will use all above mentioned 5 models with the normalized version of the d
 
 ![png](output_80_1.png)
 
+From the above plots it can be clearly concluded that after normalization logsitc regression, Naive Bayes,Support Vector Machine, and K nearest neighbour=5 all these 5 models' accuracies changed almost in the same rate along with the the test size.
+
+Random Forest model remained an anomaly in this case.
 
 **Normal distribution of different models**
 
@@ -981,7 +984,7 @@ Below is thet plot of normla distribution of the accuracies of several models.
 
 ![png](output_79_1.png)
 
-**Comaprative analysis of different models using pair plot**
+**Comaprative analysis of different models using pair plot before normalization **
 
 From the below graph it is highly evident that the values of the acccuracies of Logistic Regression and Support Vector Machine are highly positively correlated.
 
@@ -991,5 +994,18 @@ Random forest has a negative correlation with all other predictive models.
     sns.pairplot(df)
 ```
 ![png](output_75_1.png)
+
+**Comaprative analysis of different models using pair plot after normalization **
+
+From the below graph it is highly evident that the values of the acccuracies of Logistic Regression, Support Vector Machine, Naive Bayes and K nearest neighbout=5 are all more or less positively correlated among each other.
+
+Random forest has no correlation with all other predictive models. 
+
+```python
+    sns.pairplot(df_norm)
+```
+![png](output_81_1.png)
+
+
 
 
