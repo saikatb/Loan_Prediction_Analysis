@@ -1,4 +1,20 @@
 
+This project has asked for not only to determine whether the loan has got approved or not but also the hidden insights in the dataframe proveided in the dataframe in the form of data.
+
+Below is my plan with which i would like to stick to if i want to do the datascience related analysis of the given dataframe.
+
+1) Understanding Dataset
+2) Data preprocessing
+3) Exploratory Data Analysis (EDA)
+4) Features Engineering & Data Munging
+5) Selecting Modeling Algorithm
+6) Comparitive Analysis of the models
+
+
+
+
+# 1) Understanding Dataset
+
 **Loading python Libraries**
 
 ```python
@@ -59,7 +75,7 @@ The same strategy has been applied for the column "Self Employed"
     Loan.drop('Loan_ID',axis=1,inplace=True)
 ```
 
-**Univariate Analysis** 
+**Descriptive Analysis** 
 
 ```
 python  
@@ -170,7 +186,11 @@ In a nuttshell, the gist of the analysis is as below :
    7)  Most of the loan applications have been approved. 
 
 
-**Converting categorical values to numerical values using Scikit-Learn Level Encoding for the main Loan dataset**
+# 2) Data preprocessing
+
+Since the data we have in our hand is not clean, henceforth the first job would be to clean the data in various ways and convert the same into worthy of statistical use.
+
+1) Converting categorical values into numerical values using ***Scikit-Learn Level Encoding*** for the main Loan dataset
 
 ```python
 
@@ -185,6 +205,8 @@ from sklearn.preprocessing import LabelEncoder
     Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
+2) Dropping the column which is overpopulated with null values. Below is a procedure which has been followed inorder to follow as to which column to drop and which not. Firstly, the columns have been identified with null values and then the percentage of the null values have been calculated. If the percentage of the null values is less than 15 % we decided to keep the column and if its above 15%, we decided to drop the column.
+  
 
 Finding out the null values in the column
 
@@ -206,13 +228,12 @@ Loan.isnull().sum()
     dtype: int64
 ```
 
-Calculating the peercentage of Null values in the dataframe
+Calculating the percentage of Null values in the dataframe
 
 ```python
     Loan_null = pd.DataFrame((Loan.isnull().sum()),columns=['Null_Values'])
     Loan_null['%ofNullValeues'] = ((Loan_null['Null_Values'])/614*100).sort_values(ascending=True)
     Loan_null
-
 
                 Null_Values   %ofNullValeues
 
@@ -242,7 +263,7 @@ Number of null values present in the columns are as below :
    3) Loan_Amount_Term **(14)**
    4) Credit_History **(50)**
 
-**Replacing NAN values with 0 and mean** 
+3) Replacing NAN values with 0 and mean
 
 ```python
     Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
@@ -271,7 +292,10 @@ Loan.info()
     Loan_Status          614 non-null int64
     dtypes: float64(5), int64(7)
     memory usage: 57.6 KB
-```    
+```   
+
+# 3) Extrapolatory Data Analysis
+
 **Histogram**
 
 Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
