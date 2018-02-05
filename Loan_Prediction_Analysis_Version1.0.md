@@ -63,16 +63,186 @@ These 7 columns of categorical data are all nominal. The rest of the 6 columns o
         
 Out of these 6 quantitative columns ApplicantIncome is discrete and the rest 5 are continuous
 
-For continuous Data we can illustrate the information though Histogram or Boxplot
+# 2) Data preprocessing
 
-For the sake of simplicity the value NaN has been filled with the categorical value which has occured most of the time in a specific column.As for example, since "Male" is the most frequently occured categorical value in the column "Gender" hence existing NaN value had been replaced with the catergorical value "Male". 
-The same strategy has been applied for the column "Self Employed"
+Since the data we have in our hand is not clean, henceforth the first job would be to clean the data in various ways and convert the same into worthy of statistical use.
+
+**1) Finding out Null Values**
+
+Below are the number of null values present in respective columns:
+
+```python
+    Loan.isnull().sum()
+    
+    Loan_ID               0
+    Gender               13
+    Married               3
+    Dependents           15
+    Education             0
+    Self_Employed        32
+    ApplicantIncome       0
+    CoapplicantIncome     0
+    LoanAmount           22
+    Loan_Amount_Term     14
+    Credit_History       50
+    Property_Area         0
+    Loan_Status           0
+    dtype: int64
+```
+
+For the sake of simplicity the value NaN has been filled with the categorical value which has occured most of the time in a specific column.As for example, since "Male" is the most frequently occured categorical value in the column "Gender" hence existing NaN value had been replaced with the catergorical value "Male". The same strategy has been applied for the column "Self Employed"
 
 ```python
     Loan = Loan.fillna({"Gender":"Male", "Self_Employed":"No"})
     Loan.drop('Loan_ID',axis=1,inplace=True)
 ```
 
+**2) Converting categorical values into numerical values using Scikit-Learn Level Encoding for the main Loan dataset***
+
+```python
+
+from sklearn.preprocessing import LabelEncoder
+
+    lbl_encoder = LabelEncoder()
+    Loan["Gender"] = lbl_encoder.fit_transform(Loan["Gender"])
+    Loan["Married"] = lbl_encoder.fit_transform(Loan["Married"])
+    Loan["Education"] = lbl_encoder.fit_transform(Loan["Education"])
+    Loan["Self_Employed"] = lbl_encoder.fit_transform(Loan["Self_Employed"])
+    Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
+    Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
+```
+
+**3) Dropping the column which is overpopulated with null values** 
+
+Below steps are being followed in order to figure out as to which column to be dropped. 
+
+a) Columns that contain null values have been identified. 
+b) Null values for each column has been converted into the percentage.
+c) If the percentage of the null value present in any column is greater than 15 %, the column has been dropped.
+  
+
+a)Finding out the null values in the column
+
+```python
+Loan.isnull().sum()
+
+    Gender                0
+    Married               0
+    Dependents           15
+    Education             0
+    Self_Employed         0
+    ApplicantIncome       0
+    CoapplicantIncome     0
+    LoanAmount           22
+    Loan_Amount_Term     14
+    Credit_History       50
+    Property_Area         0
+    Loan_Status           0
+    dtype: int64
+```
+
+b) Calculating the percentage of Null values in the dataframe
+
+```python
+    Loan_null = pd.DataFrame((Loan.isnull().sum()),columns=['Null_Values'])
+    Loan_null['%ofNullValeues'] = ((Loan_null['Null_Values'])/614*100).sort_values(ascending=True)
+    Loan_null
+
+                Null_Values   %ofNullValeues
+
+    Loan_ID              0    0.000000
+    Gender              13    2.117264
+    Married              3    0.488599
+    Dependents          15    2.442997
+    Education            0    0.000000
+    Self_Employed       32    5.211726
+    ApplicantIncome      0    0.000000
+    CoapplicantIncome    0    0.000000
+    LoanAmount          22    3.583062
+    Loan_Amount_Term    14    2.280130
+    Credit_History      50    8.143322
+    Property_Area        0    0.000000
+    Loan_Status          0    0.000000
+```
+
+c) So, the maximum number of null values **(8.14%)** present in the column ***Credit_History***. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
+
+Inspite of that, those null values can be replaced with the suitable values i.e. 0, mean, median or mode.
+
+Number of null values present in the columns are as below :
+    
+   1) Dependents **(15)**
+   2) LoanAmount **(22)**
+   3) Loan_Amount_Term **(14)**
+   4) Credit_History **(50)**
+
+**3) Replacing missing values of NAN values with 0 and mean**
+
+```python
+    Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
+    Loan['LoanAmount'].fillna(value=Loan['LoanAmount'].mean(),axis=0,inplace=True)
+    Loan['Loan_Amount_Term'].fillna(value=Loan['Loan_Amount_Term'].mean(),axis=0,inplace=True)
+    Loan['Credit_History'].fillna(value=Loan['Credit_History'].mean(),axis=0,inplace=True)
+```
+From the below info of dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
+
+```python
+Loan.info()
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 614 entries, 0 to 613
+    Data columns (total 12 columns):
+    Gender               614 non-null int64
+    Married              614 non-null int64
+    Dependents           614 non-null float64
+    Education            614 non-null int64
+    Self_Employed        614 non-null int64
+    ApplicantIncome      614 non-null int64
+    CoapplicantIncome    614 non-null float64
+    LoanAmount           614 non-null float64
+    Loan_Amount_Term     614 non-null float64
+    Credit_History       614 non-null float64
+    Property_Area        614 non-null int64
+    Loan_Status          614 non-null int64
+    dtypes: float64(5), int64(7)
+    memory usage: 57.6 KB
+```   
+
+
+# 3) Extrapolatory Data Analysis
+
+
+```python
+    f,ax=plt.subplots(2,3,figsize=(12,16))
+    sns.countplot('Gender',data=Loan,ax=ax[0,0])
+    ax[0,0].set_title('Gender distribution')
+    sns.countplot('Married',data=Loan,ax=ax[0,1])
+    ax[0,1].set_title('Marital Status distribution')
+    sns.countplot('Education',data=Loan,ax=ax[0,2])
+    ax[0,2].set_title('Education distribution')
+    sns.countplot('Self_Employed',data=Loan,ax=ax[1,0])
+    ax[1,0].set_title('Self_Employed distribution')
+    sns.countplot('Credit_History',data=Loan,ax=ax[1,1])
+    ax[1,1].set_title('Credit_History distribution')
+    sns.countplot('Property_Area',data=Loan,ax=ax[1,2])
+    ax[1,2].set_title('Property_Area distribution')
+```
+   ![png](output_77_1.png)
+
+```python
+    f,ax=plt.subplots(1,1,figsize=(6,6))
+    sns.countplot('Loan_Status',data=Loan)
+    ax.set_title('Loan_Status distribution')
+```
+   ![png](output_79_1.png) 
+   
+ 
+```python
+    f,ax=plt.subplots(1,1,figsize=(6,6))
+    sns.countplot('Loan_Amount_Term',data=Loan)
+    ax.set_title('Loan_Amount_Term distribution')
+```  
+   ![png](output_78_1.png)
+ 
 **Descriptive Analysis** 
 
 ```
@@ -184,157 +354,6 @@ In a nuttshell, the gist of the analysis is as below :
    7)  Most of the loan applications have been approved. 
 
 
-# 2) Data preprocessing
-
-Since the data we have in our hand is not clean, henceforth the first job would be to clean the data in various ways and convert the same into worthy of statistical use.
-
-**1) Converting categorical values into numerical values using Scikit-Learn Level Encoding for the main Loan dataset***
-
-```python
-
-from sklearn.preprocessing import LabelEncoder
-
-    lbl_encoder = LabelEncoder()
-    Loan["Gender"] = lbl_encoder.fit_transform(Loan["Gender"])
-    Loan["Married"] = lbl_encoder.fit_transform(Loan["Married"])
-    Loan["Education"] = lbl_encoder.fit_transform(Loan["Education"])
-    Loan["Self_Employed"] = lbl_encoder.fit_transform(Loan["Self_Employed"])
-    Loan["Property_Area"] = lbl_encoder.fit_transform(Loan["Property_Area"])
-    Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
-```
-
-**2) Dropping the column which is overpopulated with null values** 
-
-Below steps are being followed in order to figure out as to which column to be dropped. 
-
-1) Columns that contain null values have been identified. 
-2) Null values for each column has been converted into the percentage.
-3) If the percentage of the null value present in any column is greater than 15 %, the column has been dropped.
-  
-
-Finding out the null values in the column
-
-```python
-Loan.isnull().sum()
-
-    Gender                0
-    Married               0
-    Dependents           15
-    Education             0
-    Self_Employed         0
-    ApplicantIncome       0
-    CoapplicantIncome     0
-    LoanAmount           22
-    Loan_Amount_Term     14
-    Credit_History       50
-    Property_Area         0
-    Loan_Status           0
-    dtype: int64
-```
-
-Calculating the percentage of Null values in the dataframe
-
-```python
-    Loan_null = pd.DataFrame((Loan.isnull().sum()),columns=['Null_Values'])
-    Loan_null['%ofNullValeues'] = ((Loan_null['Null_Values'])/614*100).sort_values(ascending=True)
-    Loan_null
-
-                Null_Values   %ofNullValeues
-
-    Loan_ID              0    0.000000
-    Gender              13    2.117264
-    Married              3    0.488599
-    Dependents          15    2.442997
-    Education            0    0.000000
-    Self_Employed       32    5.211726
-    ApplicantIncome      0    0.000000
-    CoapplicantIncome    0    0.000000
-    LoanAmount          22    3.583062
-    Loan_Amount_Term    14    2.280130
-    Credit_History      50    8.143322
-    Property_Area        0    0.000000
-    Loan_Status          0    0.000000
-```
-
-So, the maximum number of null values **(8.14%)** present in the column ***Credit_History***. Since the number of null values present is far below 15% and henceforth there is no need to drop any of the column from the dataframe.
-
-Inspite of that, those null values can be replaced with the suitable values i.e. 0, mean, median or mode.
-
-Number of null values present in the columns are as below :
-    
-   1) Dependents **(15)**
-   2) LoanAmount **(22)**
-   3) Loan_Amount_Term **(14)**
-   4) Credit_History **(50)**
-
-**3) Replacing missing values of NAN values with 0 and mean**
-
-```python
-    Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
-    Loan['LoanAmount'].fillna(value=Loan['LoanAmount'].mean(),axis=0,inplace=True)
-    Loan['Loan_Amount_Term'].fillna(value=Loan['Loan_Amount_Term'].mean(),axis=0,inplace=True)
-    Loan['Credit_History'].fillna(value=Loan['Credit_History'].mean(),axis=0,inplace=True)
-```
-From the below info of dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
-
-```python
-Loan.info()
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 614 entries, 0 to 613
-    Data columns (total 12 columns):
-    Gender               614 non-null int64
-    Married              614 non-null int64
-    Dependents           614 non-null float64
-    Education            614 non-null int64
-    Self_Employed        614 non-null int64
-    ApplicantIncome      614 non-null int64
-    CoapplicantIncome    614 non-null float64
-    LoanAmount           614 non-null float64
-    Loan_Amount_Term     614 non-null float64
-    Credit_History       614 non-null float64
-    Property_Area        614 non-null int64
-    Loan_Status          614 non-null int64
-    dtypes: float64(5), int64(7)
-    memory usage: 57.6 KB
-```   
-
-
-# 3) Extrapolatory Data Analysis
-
-
-```python
-    f,ax=plt.subplots(2,3,figsize=(12,16))
-    sns.countplot('Gender',data=Loan,ax=ax[0,0])
-    ax[0,0].set_title('Gender distribution')
-    sns.countplot('Married',data=Loan,ax=ax[0,1])
-    ax[0,1].set_title('Marital Status distribution')
-    sns.countplot('Education',data=Loan,ax=ax[0,2])
-    ax[0,2].set_title('Education distribution')
-    sns.countplot('Self_Employed',data=Loan,ax=ax[1,0])
-    ax[1,0].set_title('Self_Employed distribution')
-    sns.countplot('Credit_History',data=Loan,ax=ax[1,1])
-    ax[1,1].set_title('Credit_History distribution')
-    sns.countplot('Property_Area',data=Loan,ax=ax[1,2])
-    ax[1,2].set_title('Property_Area distribution')
-```
-   ![png](output_77_1.png)
-
-```python
-    f,ax=plt.subplots(1,1,figsize=(6,6))
-    sns.countplot('Loan_Status',data=Loan)
-    ax.set_title('Loan_Status distribution')
-```
-   ![png](output_79_1.png) 
-   
- 
-```python
-    f,ax=plt.subplots(1,1,figsize=(6,6))
-    sns.countplot('Loan_Amount_Term',data=Loan)
-    ax.set_title('Loan_Amount_Term distribution')
-```  
-   ![png](output_78_1.png)
- 
- 
 
 **Histogram**
 
