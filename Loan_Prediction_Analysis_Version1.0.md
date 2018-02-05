@@ -275,7 +275,7 @@ Number of null values present in the columns are as below :
     Loan['Loan_Amount_Term'].fillna(value=Loan['Loan_Amount_Term'].mean(),axis=0,inplace=True)
     Loan['Credit_History'].fillna(value=Loan['Credit_History'].mean(),axis=0,inplace=True)
 ```
-Fron the below info of dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
+From the below info of dataframe it is found that all the NaN values have been replaced with sutitable value depending upon the types of the data
 
 ```python
 Loan.info()
@@ -298,7 +298,38 @@ Loan.info()
     memory usage: 57.6 KB
 ```   
 
+
 # 3) Extrapolatory Data Analysis
+
+
+```python
+
+    f,ax=plt.subplots(2,3,figsize=(12,16))
+    sns.countplot('Gender',data=Loan,ax=ax[0,0])
+    ax[0,0].set_title('Gender distribution')
+    sns.countplot('Married',data=Loan,ax=ax[0,1])
+    ax[0,1].set_title('Marital Status distribution')
+    sns.countplot('Education',data=Loan,ax=ax[0,2])
+    ax[0,2].set_title('Education distribution')
+    sns.countplot('Self_Employed',data=Loan,ax=ax[1,0])
+    ax[1,0].set_title('Self_Employed distribution')
+    sns.countplot('Credit_History',data=Loan,ax=ax[1,1])
+    ax[1,1].set_title('Credit_History distribution')
+    sns.countplot('Property_Area',data=Loan,ax=ax[1,2])
+    ax[1,2].set_title('Property_Area distribution')
+```
+ 
+ 
+```python
+    f,ax=plt.subplots(1,1,figsize=(6,6))
+    sns.countplot('Loan_Amount_Term',data=Loan)
+    ax.set_title('Loan_Amount_Term distribution')
+```
+
+
+ 
+ 
+ 
 
 **Histogram**
 
