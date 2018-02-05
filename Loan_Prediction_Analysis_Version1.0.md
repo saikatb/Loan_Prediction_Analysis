@@ -190,7 +190,7 @@ In a nuttshell, the gist of the analysis is as below :
 
 Since the data we have in our hand is not clean, henceforth the first job would be to clean the data in various ways and convert the same into worthy of statistical use.
 
-1) Converting categorical values into numerical values using ***Scikit-Learn Level Encoding*** for the main Loan dataset
+**1) Converting categorical values into numerical values using Scikit-Learn Level Encoding for the main Loan dataset***
 
 ```python
 
@@ -205,7 +205,7 @@ from sklearn.preprocessing import LabelEncoder
     Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
-2) Dropping the column which is overpopulated with null values. Below is a procedure which has been followed inorder to follow as to which column to drop and which not. Firstly, the columns have been identified with null values and then the percentage of the null values have been calculated. If the percentage of the null values is less than 15 % we decided to keep the column and if its above 15%, we decided to drop the column.
+**2) Dropping the column which is overpopulated with null values. Below is a procedure which has been followed inorder to follow as to which column to drop and which not. Firstly, the columns have been identified with null values and then the percentage of the null values have been calculated. If the percentage of the null values is less than 15 % we decided to keep the column and if its above 15%, we decided to drop the column**
   
 
 Finding out the null values in the column
@@ -263,7 +263,7 @@ Number of null values present in the columns are as below :
    3) Loan_Amount_Term **(14)**
    4) Credit_History **(50)**
 
-3) Replacing NAN values with 0 and mean
+**3) Replacing missing values of NAN values with 0 and mean**
 
 ```python
     Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
