@@ -276,7 +276,7 @@ In a nuttshell, the gist of the analysis is as below :
             Y              347
     Name: Education, dtype: int64
 ```
-   8) More number of male applicants' loans got approved as compated to female applicants.
+   8) More number of male applicants' loans got approved as compared to female applicants.
 
 ```python
    Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
@@ -288,7 +288,7 @@ In a nuttshell, the gist of the analysis is as below :
                   Y               82
     Name: Loan_Status, dtype: int64
 ```
-   9) More number of Graduates' loans got apprived as compated to Not Graduates
+   9) More loans of "Graduates" got approved as compared to "Not Graduates"
    
 ```python   
    Loan.groupby(['Property_Area','Loan_Status'])['Loan_Status'].count()
@@ -313,7 +313,7 @@ In a nuttshell, the gist of the analysis is as below :
                    Y               56
     Name: Loan_Status, dtype: int64
 ```
-  11) More number of Loan term amount of 360 got approved.
+  11) Loan term of 360 got maximum approval.
   
 ```python
    Loan.groupby(['Loan_Amount_Term','Loan_Status'])['Loan_Status'].count()
@@ -338,7 +338,7 @@ In a nuttshell, the gist of the analysis is as below :
     Name: Loan_Status, dtype: int64
 ```  
    
-   12) Most of the loans from self employed individuals got rejected.
+   12) Most of the loan applications of self employed individuals got rejected.
    
  ```python
 
