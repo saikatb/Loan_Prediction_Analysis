@@ -226,24 +226,15 @@ Below are the barplots of several independent and dependent variables.
     ax[1,1].set_title('Credit_History distribution')
     sns.countplot('Property_Area',data=Loan,ax=ax[1,2])
     ax[1,2].set_title('Property_Area distribution')
+    sns.countplot('Loan_Status',data=Loan,ax=ax[2,0])
+    ax[2,0].set_title('Loan_Status distribution')
+    sns.countplot('Loan_Amount_Term',data=Loan,ax=ax[2,1])
+    ax[2,1].set_title('Loan_Amount_Term distribution')
+    sns.countplot('Dependents',data=Loan,ax=ax[2,2])
+    ax[2,2].set_title('Dependents distribution')
 ```
-   ![png](output_77_1.png)
-
-```python
-    f,ax=plt.subplots(1,1,figsize=(6,6))
-    sns.countplot('Loan_Status',data=Loan)
-    ax.set_title('Loan_Status distribution')
-```
-   ![png](output_79_1.png) 
-   
- 
-```python
-    f,ax=plt.subplots(1,1,figsize=(6,6))
-    sns.countplot('Loan_Amount_Term',data=Loan)
-    ax.set_title('Loan_Amount_Term distribution')
-```  
    ![png](output_78_1.png)
- 
+
 
 In a nuttshell, the gist of the analysis is as below : 
         
@@ -255,6 +246,7 @@ In a nuttshell, the gist of the analysis is as below :
    5)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
    6)  Most of the loan applications have been approved.
    7)  Most of the people opted for loan amount term of 360 days.
+   8)  More people with 0 dependent applied for the loans
 
 
 **Further analysis gave us following points:**
@@ -294,10 +286,10 @@ Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
     Urban          N               69
                    Y              133
     Name: Loan_Status, dtype: int64
-``` 
+ ``` 
   10) If the property is situated in semiurban area, the chances of getting loan approved is high as comapared to Rural or Urban.
   
-```python
+ ```python
     Loan.groupby(['Self_Employed','Loan_Status'])['Loan_Status'].count()
     Self_Employed  Loan_Status
     No             N              166
@@ -308,7 +300,7 @@ Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
 ```
   11) More number of Loan term amount of 360 got approved.
   
-  ```python
+```python
   Loan.groupby(['Loan_Amount_Term','Loan_Status'])['Loan_Status'].count()
   
         Loan_Amount_Term  Loan_Status
@@ -333,18 +325,34 @@ Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
    
    12) Most of the loans from self employed individuals got rejected.
    
-```python
+ ```python
 
-    Loan.groupby(['Self_Employed','Loan_Status'])['Loan_Status'].count()
-    
-        Self_Employed  Loan_Status
-    No             N              166
-                   Y              366
-    Yes            N               26
-                   Y               56
+        Loan.groupby(['Self_Employed','Loan_Status'])['Loan_Status'].count()
+
+            Self_Employed  Loan_Status
+        No             N              166
+                       Y              366
+        Yes            N               26
+                       Y               56
+        Name: Loan_Status, dtype: int64
+  ```
+
+   13) Loans of applicants with 0 dependents got more approved as compared to other applicants. Mainly, because it has been percieved   that applicants with 0 dependents have lesser liabilities.
+ 
+```python
+    Loan.groupby(['Dependents','Loan_Status'])['Loan_Status'].count()
+        Dependents  Loan_Status
+    0.0         N              107
+                Y              238
+    1.0         N               36
+                Y               66
+    2.0         N               25
+                Y               76
+    3.0         N                1
+    4.0         N               17
+                Y               33
     Name: Loan_Status, dtype: int64
 ```
-
 
 **Histogram**
 
