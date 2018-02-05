@@ -554,15 +554,16 @@ Graphs have been plotted against test sizes and accuracies for all the above-men
 Before splitting the dataframe dataframe has been splitted into seperate dataframe. One datframe(Y) will have the target variable i.e. ***Loan_Status*** and the other (X) will contain the rest of the independent variables. 
 
 ```python
-    Y = Loan['Loan_Status']
-    X = pd.concat([Loan['Gender'], Loan['Married'], Loan['Dependents'], Loan['Education'], Loan['Self_Employed'], Loan['ApplicantIncome'], Loan['CoapplicantIncome'], Loan['LoanAmount'], Loan['Loan_Amount_Term'], Loan['Credit_History'], Loan['Property_Area']],axis=1) 
+   Y = Loan['Loan_Status']
+   X = pd.concat([Loan['Gender'], Loan['Married'], Loan['Dependents'], Loan['Education'], Loan['Self_Employed'], Loan['ApplicantIncome'], Loan['CoapplicantIncome'], Loan['LoanAmount'], Loan['Loan_Amount_Term'], Loan['Credit_History'], Loan['Property_Area']],axis=1) 
 ```
 
 ```python
-    Y.shape, X.shape
-```
+   Y.shape, X.shape
     ((614L,), (614, 11))
+```
 
+Below predictive models have been used on the **dataset** which has **not been normalized**.
 
 **Logistic Regression** 
 
@@ -953,6 +954,11 @@ The maximum and minimum values of the dataframe has been plotted in a single fra
 ```
 
 ![png](output_69_1.png)
+
+If we will use all above mentioned 5 models with the normalized version of the datset, all the plots of ***accuracy vs test size*** of all 5 algorithms would look as shown in the below frame.
+
+![png](output_80_1.png)
+
 
 **Normal distribution of different models**
 
