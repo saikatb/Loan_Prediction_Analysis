@@ -956,39 +956,24 @@ The maximum and minimum values of the dataframe has been plotted in a single fra
 
 **Normal distribution of different models**
 
-```python
-    import seaborn as sns
-    sns.distplot(df['Logistic Regression'])
-```
-![png](output_70_1.png)
+Below is thet plot of normla distribution of the accuracies of several models.
 
 ```python
-    import seaborn as sns
-    sns.distplot(df['Naive Bayes'])
+   import seaborn as sns
+   f,ax=plt.subplots(3,2,figsize=(12,18))
+   sns.distplot(df['Logistic Regression'],ax=ax[0,0])
+   ax[0,0].set_title('Normal distribution of accuracy of Logistic Regression')
+   sns.distplot(df['Naive Bayes'],ax=ax[0,1])
+   ax[0,1].set_title('Normal distribution of accuracy of Naive Bayes')
+   sns.distplot(df['Random Forest'],ax=ax[1,0])
+   ax[1,0].set_title('Normal distribution of accuracy of Random Forest')
+   sns.distplot(df['Support Vector Machine'],ax=ax[1,1])
+   ax[1,1].set_title('Normal distribution of accuracy of Support Vector Machine')
+   sns.distplot(df['k Nearrest Neighbor=5'],ax=ax[2,0])
+   ax[2,0].set_title('Normal distribution of accuracy of k Nearrest Neighbor=5')
 ```
 
-![png](output_71_1.png)
-
-```python
-    import seaborn as sns
-    sns.distplot(df['Random Forest'])
-```
-
-![png](output_72_1.png)
-
-```python
-    import seaborn as sns
-    sns.distplot(df['Support Vector Machine'])
-```
-
-![png](output_73_1.png)
-
-```python
-    import seaborn as sns
-    sns.distplot(df['k Nearrest Neighbor=5'])
-```
-
-![png](output_74_1.png)
+![png](output_79_1.png)
 
 **Comaprative analysis of different models using pair plot**
 
