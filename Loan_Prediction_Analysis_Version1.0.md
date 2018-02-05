@@ -11,8 +11,6 @@ Below is my plan with which i would like to stick to if i want to do the datasci
 6) Comparitive Analysis of the models
 
 
-
-
 # 1) Understanding Dataset
 
 **Loading python Libraries**
@@ -205,7 +203,13 @@ from sklearn.preprocessing import LabelEncoder
     Loan["Loan_Status"] = lbl_encoder.fit_transform(Loan["Loan_Status"])
 ```
 
-**2) Dropping the column which is overpopulated with null values. Below is a procedure which has been followed inorder to follow as to which column to drop and which not. Firstly, the columns have been identified with null values and then the percentage of the null values have been calculated. If the percentage of the null values is less than 15 % we decided to keep the column and if its above 15%, we decided to drop the column**
+**2) Dropping the column which is overpopulated with null values** 
+
+Below steps are being followed in order to figure out as to which column to be dropped. 
+
+1) Columns that contain null values have been identified. 
+2) Null values for each column has been converted into the percentage.
+3) If the percentage of the null value present in any column is greater than 15 %, the column has been dropped.
   
 
 Finding out the null values in the column
