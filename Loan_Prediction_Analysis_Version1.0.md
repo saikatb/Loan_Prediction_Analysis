@@ -354,6 +354,57 @@ In a nuttshell, the gist of the analysis is as below :
    7)  Most of the loan applications have been approved. 
 
 
+Further analysis give us following points 
+
+```
+Loan.groupby(['Gender','Loan_Status'])['Education'].count()
+    Gender  Loan_Status
+    Female  N               37
+            Y               75
+    Male    N              155
+            Y              347
+    Name: Education, dtype: int64
+```
+   8) More number of male applicants' loans got approved as compated to female applicants.
+
+```
+Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
+    Education     Loan_Status
+    Graduate      N              140
+                  Y              340
+    Not Graduate  N               52
+                  Y               82
+    Name: Loan_Status, dtype: int64
+```
+   9) More number of Graduates' loans got apprived as compated to Not Graduates
+   
+```python   
+   Loan.groupby(['Property_Area','Loan_Status'])['Loan_Status'].count()
+   
+    Property_Area  Loan_Status
+    Rural          N               69
+                   Y              110
+    Semiurban      N               54
+                   Y              179
+    Urban          N               69
+                   Y              133
+    Name: Loan_Status, dtype: int64
+``` 
+  10) If the property is situated in semiurban area, the chances of getting loan approved is high as comapared to Rural or Urban.
+  
+```python
+    Loan.groupby(['Self_Employed','Loan_Status'])['Loan_Status'].count()
+    Self_Employed  Loan_Status
+    No             N              166
+                   Y              366
+    Yes            N               26
+                   Y               56
+    Name: Loan_Status, dtype: int64
+```
+   11) Less number of self employed peoples' loans got approved.
+  
+  
+   
 
 **Histogram**
 
