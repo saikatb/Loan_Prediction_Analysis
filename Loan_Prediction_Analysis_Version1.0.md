@@ -318,7 +318,7 @@ Loan.info()
     sns.countplot('Property_Area',data=Loan,ax=ax[1,2])
     ax[1,2].set_title('Property_Area distribution')
 ```
- 
+   ![png](output_77_1.png)
  
 ```python
     f,ax=plt.subplots(1,1,figsize=(6,6))
