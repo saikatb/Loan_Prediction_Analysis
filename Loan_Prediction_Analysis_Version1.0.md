@@ -303,7 +303,6 @@ Loan.info()
 
 
 ```python
-
     f,ax=plt.subplots(2,3,figsize=(12,16))
     sns.countplot('Gender',data=Loan,ax=ax[0,0])
     ax[0,0].set_title('Gender distribution')
@@ -319,21 +318,27 @@ Loan.info()
     ax[1,2].set_title('Property_Area distribution')
 ```
    ![png](output_77_1.png)
+
+```python
+    f,ax=plt.subplots(1,1,figsize=(6,6))
+    sns.countplot('Loan_Status',data=Loan)
+    ax.set_title('Loan_Status distribution')
+```
+   ![png](output_79_1.png) 
+   
  
 ```python
     f,ax=plt.subplots(1,1,figsize=(6,6))
     sns.countplot('Loan_Amount_Term',data=Loan)
     ax.set_title('Loan_Amount_Term distribution')
-```
-
-
- 
+```  
+   ![png](output_78_1.png)
  
  
 
 **Histogram**
 
-Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
+  Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
 
     ```python
     import seaborn as sns
