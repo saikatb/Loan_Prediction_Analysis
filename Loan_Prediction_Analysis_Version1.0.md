@@ -526,6 +526,10 @@ Heatmap plot after doing the normalizing the scale of all the columns in between
 
 Even though the scale has been normalized in a scale of 0 and 1, no significant differences have been found in the pearson correlation coefficients between multple independent variables. Henceforth, it can be concluded that normalization did not play any significant role in data preprocessing.
 
+# 4) Feature Engineering & Data Munging
+   
+   Feature engineering or data munging has not been done in this analysis.
+
 # 5) Selecting Modeling Algorithm
 
 Below are the models been used to predict the status of the loan. ( whether it is issued or not ? )
