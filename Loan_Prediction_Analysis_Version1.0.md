@@ -206,6 +206,21 @@ Loan.info()
     memory usage: 57.6 KB
 ```   
 
+**5) Normalization**
+
+Below python code has been used in order to implement the normalization in the present dataset. The scale of the values of all the columns have been normalized in between 0 and 1.
+
+```python
+    from sklearn import preprocessing
+    import pandas as pd
+    x = Loan.values 
+    min_max_scaler = preprocessing.MinMaxScaler()
+    x_scaled = min_max_scaler.fit_transform(x)
+    Loan_Norm = pd.DataFrame(x_scaled)
+
+    Loan_Norm.columns = ['Gender_Norm', 'Married_Norm', 'Dependents_Norm', 'Education_Norm', 'Self_Employed_Norm',           'ApplicantIncome_Norm', 'CoapplicantIncome_Norm', 'LoanAmount_Norm', 'Loan_Amount_Term_Norm', 'Credit_History_Norm', 'Property_Area_Norm', 'Loan_Status_Norm']
+
+```
 
 # 3) Extrapolatory Data Analysis
 
@@ -486,12 +501,9 @@ From the above heatmap we can conclude following things:
 
 Below is the pairplot which clearly shows the scatter plot in between different columns of loan dataset and how they are correlated or even they are related whatsoever
 
-
-
 **Normalization**
 
-Below is the dataset after normalizing the scale of all the columns from 0 to 1.
-Below python code has been used in order to implement the normalization in the present dataset.
+Below python code has been used in order to implement the normalization in the present dataset. The scale of the values of all the columns have been normalized in between 0 and 1.
 
 ```python
     from sklearn import preprocessing
