@@ -67,7 +67,7 @@ Out of these 6 quantitative columns ApplicantIncome is discrete and the rest 5 a
 
 Since the data we have in our hand is not clean, henceforth the first job would be to clean the data in various ways and convert the same into worthy of statistical use.
 
-**1) Finding out Null Values**
+**1) Finding null values and data imputation**
 
 Below are the number of null values present in respective columns:
 
@@ -176,7 +176,7 @@ Number of null values present in the columns are as below :
    3) Loan_Amount_Term **(14)**
    4) Credit_History **(50)**
 
-**3) Replacing missing values of NAN values with 0 and mean**
+**4) Replacing missing values of NAN values with 0 and mean**
 
 ```python
     Loan['Dependents'].fillna(value=0,axis=0,inplace=True)
@@ -358,6 +358,7 @@ Further analysis give us following points
 
 ```
 Loan.groupby(['Gender','Loan_Status'])['Education'].count()
+
     Gender  Loan_Status
     Female  N               37
             Y               75
@@ -369,6 +370,7 @@ Loan.groupby(['Gender','Loan_Status'])['Education'].count()
 
 ```
 Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
+
     Education     Loan_Status
     Graduate      N              140
                   Y              340
