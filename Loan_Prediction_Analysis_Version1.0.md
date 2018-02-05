@@ -210,9 +210,11 @@ Loan.info()
 
 # 3) Extrapolatory Data Analysis
 
+Bar plots have been used in order to dig into the datsets to extract the hidden information.
+Below are the barplots of 
 
 ```python
-    f,ax=plt.subplots(2,3,figsize=(12,16))
+    f,ax=plt.subplots(2,3,figsize=(12,12))
     sns.countplot('Gender',data=Loan,ax=ax[0,0])
     ax[0,0].set_title('Gender distribution')
     sns.countplot('Married',data=Loan,ax=ax[0,1])
@@ -243,118 +245,20 @@ Loan.info()
 ```  
    ![png](output_78_1.png)
  
-**Descriptive Analysis** 
-
-```
-python  
-    Loan['Gender'].describe()
-  
-    count      614
-    unique       2
-    top       Male
-    freq       502
-     Name: Gender, dtype: object
-  
-```
-1) Number of "Male" is more in the observation
-
-```python
-   
-Loan['Education'].describe()
-
-    count          614
-    unique           2
-    top       Graduate
-    freq           480
-    Name: Education, dtype: object
-```
-2) There are more number of Graduates present among those who have applied for the Loan 
-
-```python
-                 
- Loan['Dependents'].describe()
-  
-    count    599.000000
-    mean       0.846411
-    std        1.217123
-    min        0.000000
-    25%        0.000000
-    50%        0.000000
-    75%        2.000000
-    max        4.000000
-    Name: Dependents, dtype: float64
- 
-```
-3) People with "0" dependent expects to get their loan approved
-
-```python
-
-Loan['Married'].describe()
-
-    count     611
-    unique      2
-    top       Yes
-    freq      398
-    Name: Married, dtype: object
-    
-```
-4) In the observation count of married people is more. The same clearly signifies that married people are inclined towards taking loan
-
-```python
-   
-Loan['Self_Employed'].describe()
-
-    count     614
-    unique      2
-    top        No
-    freq      532
-    Name: Self_Employed, dtype: object
-    
-```
-5 ) Self employed people are not so comfortable in applying for the loan as they are not sure of paying it back. 
-
-```python
-    
-Loan['Property_Area'].describe()
-
-    count           614
-    unique            3
-    top       Semiurban
-    freq            233
-    Name: Property_Area, dtype: object
-```
-6) People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
-
-```python
-Loan['Loan_Status'].describe()
-
-    mean       0.687296
-    std        0.463973
-    min        0.000000
-    25%        0.000000
-    50%        1.000000
-    75%        1.000000
-    max        1.000000
-    Name: Loan_Status, dtype: float64
-
-
-```
-7) Most of the loan applications have been approved.
-
 
 In a nuttshell, the gist of the analysis is as below : 
         
    1)  Number of "Male" is more in the observation.
-   2)  There are more number of Graduates present among those who have applied for the Loan. 
-   3)  People with "0" dependent expects to get their loan approved.
-   4)  In the observation Number of married people is more which clearly signifies that married people are inclined 
+   2)  There are more number of married couples present in the dataset. This also signifies that married people are inclined 
         towards taking loan.
-   5)  People who are self employed are not so comfortable or sure in applying for the loan.
-   6)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
-   7)  Most of the loan applications have been approved. 
+   3)  here are more number of Graduates present among those who have applied for the Loan. 
+   4)  People who are self employed are not so comfortable or sure in applying for the loan.
+   5)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
+   6)  Most of the loan applications have been approved.
+   7)  Most of the people opted for loan amount term of 360 days.
 
 
-Further analysis give us following points 
+**Further analysis gave us following points:**
 
 ```
 Loan.groupby(['Gender','Loan_Status'])['Education'].count()
@@ -403,10 +307,45 @@ Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
                    Y               56
     Name: Loan_Status, dtype: int64
 ```
-   11) Less number of self employed peoples' loans got approved.
+  11) More number of Loan term amount of 360 got approved.
   
+  ```python
+  Loan.groupby(['Loan_Amount_Term','Loan_Status'])['Loan_Status'].count()
   
+        Loan_Amount_Term  Loan_Status
+    12.0              Y                1
+    36.0              N                2
+    60.0              Y                2
+    84.0              N                1
+                      Y                3
+    120.0             Y                3
+    180.0             N               15
+                      Y               29
+    240.0             N                1
+                      Y                3
+    300.0             N                5
+                      Y                8
+    360.0             N              153
+                      Y              359
+    480.0             N                9
+                      Y                6
+    Name: Loan_Status, dtype: int64
+```  
    
+   12) Most of the loans from self employed individuals got rejected.
+   
+```python
+
+    Loan.groupby(['Self_Employed','Loan_Status'])['Loan_Status'].count()
+    
+        Self_Employed  Loan_Status
+    No             N              166
+                   Y              366
+    Yes            N               26
+                   Y               56
+    Name: Loan_Status, dtype: int64
+```
+
 
 **Histogram**
 
