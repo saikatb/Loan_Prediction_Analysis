@@ -276,7 +276,7 @@ In a nuttshell, the gist of the analysis is as below :
             Y              347
     Name: Education, dtype: int64
 ```
-   8) More number of male applicants' loans got approved as compared to female applicants.
+   9) More number of male applicants' loans got approved as compared to female applicants.
 
 ```python
    Loan.groupby(['Education','Loan_Status'])['Loan_Status'].count()
@@ -288,7 +288,7 @@ In a nuttshell, the gist of the analysis is as below :
                   Y               82
     Name: Loan_Status, dtype: int64
 ```
-   9) More loans of "Graduates" got approved as compared to "Not Graduates"
+   10) More loans of "Graduates" got approved as compared to "Not Graduates"
    
 ```python   
    Loan.groupby(['Property_Area','Loan_Status'])['Loan_Status'].count()
@@ -302,7 +302,7 @@ In a nuttshell, the gist of the analysis is as below :
                    Y              133
     Name: Loan_Status, dtype: int64
  ``` 
-  10) If the property is situated in semiurban area, the chances of getting loan approved is high as comapared to Rural or Urban.
+   11) If the property is situated in semiurban area, the chances of getting loan approved is high as comapared to Rural or Urban.
   
  ```python
     Loan.groupby(['Self_Employed','Loan_Status'])['Loan_Status'].count()
@@ -313,7 +313,7 @@ In a nuttshell, the gist of the analysis is as below :
                    Y               56
     Name: Loan_Status, dtype: int64
 ```
-  11) Loan term of 360 got maximum approval.
+   12) Loan term of 360 got maximum approval.
   
 ```python
    Loan.groupby(['Loan_Amount_Term','Loan_Status'])['Loan_Status'].count()
@@ -338,7 +338,7 @@ In a nuttshell, the gist of the analysis is as below :
     Name: Loan_Status, dtype: int64
 ```  
    
-   12) Most of the loan applications of self employed individuals got rejected.
+   13) Most of the loan applications of self employed individuals got rejected.
    
  ```python
 
@@ -352,7 +352,7 @@ In a nuttshell, the gist of the analysis is as below :
         Name: Loan_Status, dtype: int64
   ```
 
-   13) Loans of applicants with 0 dependents got more approved as compared to other applicants. Mainly, because it has been percieved   that applicants with 0 dependents have lesser liabilities.
+   14) Loans of applicants with 0 dependents got more approved as compared to other applicants. Mainly, because it has been percieved   that applicants with 0 dependents have lesser liabilities.
  
 ```python
     Loan.groupby(['Dependents','Loan_Status'])['Loan_Status'].count()
