@@ -952,9 +952,9 @@ The maximum and minimum values of the dataframe has been plotted in a single fra
     ax.set_ylabel("Algo")
 ```
 
-**Normal distribution of different models**
-
 ![png](output_69_1.png)
+
+**Normal distribution of different models**
 
 ```python
     import seaborn as sns
