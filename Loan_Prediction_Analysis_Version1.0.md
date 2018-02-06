@@ -458,6 +458,9 @@ Following is the Kurtosis and skewness of Co applicants' income.
  ```python
     print("Skewness: %f" % Loan['CoapplicantIncome'].skew())
     print("Kurtosis: %f" % Loan['CoapplicantIncome'].kurt())
+        
+        Skewness: 7.491531
+        Kurtosis: 84.956384
  ```
 
 **Multivariate Analysis**
@@ -465,16 +468,16 @@ Following is the Kurtosis and skewness of Co applicants' income.
 In multivariate analysis we tried to figure out the pearson correlation coefficient among different columns using a heatmap.
 
 ```python
-    corr=Loan.corr()#["Loan_Status"]
-    plt.figure(figsize=(12, 8))
+   corr=Loan.corr()#["Loan_Status"]
+   plt.figure(figsize=(12, 8))
 
-    sns.heatmap(corr, 
-                vmax=.8, 
-                linewidths=0.01,
-                square=True,
-                annot=True,
-                cmap='Blues',
-                linecolor="lightblue")
+   sns.heatmap(corr, 
+     vmax=.8, 
+      linewidths=0.01,
+         square=True,
+         annot=True,
+         cmap='Blues',
+         linecolor="lightblue")
     plt.title('Correlation between features');
 ```
 
