@@ -379,9 +379,9 @@ In a nuttshell, the gist of the analysis is as below :
 
 **Descriptive Analysis**
 
-Tried to plot a summary of the dataset which looks as below : 
+Beow is the summary of the dataset.
 
-![png](output_82_1.png)
+![png](output_26_1.png)
 
 **Outliers**
 
