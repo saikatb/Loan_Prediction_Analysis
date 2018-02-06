@@ -224,8 +224,18 @@ Below python code has been used in order to implement the normalization in the p
 
 # 3) Extrapolatory Data Analysis
 
-Bar plots have been used in order to dig into the datsets to extract the hidden information.
-Below are the barplots of several independent and dependent variables.
+In extrapolatory data analysis we will get familiar with the data and will ask questions before trying to forecast the data and run machine learning models on the data.
+After skimming through the dataset, following questions started popping in my mind : 
+
+1) Whether there is any gender bias in getting the loans ? 
+2) Whether banks are more interested in giving away loans to the married couples ? 
+3) Does Income of the applicans have any contribution in case of the approval of the loans ?
+4) Does the locality where your property is a determing factor in getting the approval for the loan ? 
+5) Does credit history have any significance in gettting the approval of the loan ? 
+
+In order to get the answer of all these questions we need to dig in deeper.
+
+Bar plots have been used to viusally represent the data.Below are the barplots of several independent and dependent variables.
 
 ```python
     f,ax=plt.subplots(2,3,figsize=(12,12))
@@ -256,7 +266,7 @@ In a nuttshell, the gist of the analysis is as below :
    1)  Number of "Male" is more in the observation.
    2)  There are more number of married couples present in the dataset. This also signifies that married people are inclined 
         towards taking loan.
-   3)  here are more number of Graduates present among those who have applied for the Loan. 
+   3)  There are more number of Graduates present among those who have applied for the Loan. 
    4)  People who are self employed are not so comfortable or sure in applying for the loan.
    5)  People who hail from semiurban are more inclined towards applying for loan as compare to those who are from Urban or Rural.
    6)  Most of the loan applications have been approved.
