@@ -379,6 +379,12 @@ In a nuttshell, the gist of the analysis is as below :
     Name: Loan_Status, dtype: int64
 ```
 
+**Descriptive Analysis**
+
+Tried to plot a summary of the dataset which looks as below : 
+
+![png](output_82_1.png)
+
 **Histogram**
 
   Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
