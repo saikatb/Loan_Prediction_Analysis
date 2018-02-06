@@ -411,8 +411,8 @@ Below boxplots will show the outliers of columns **ApplicantIncome, LoanAmount, 
   Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
 
     ```python
-    import seaborn as sns
-    sns.distplot(Loan['ApplicantIncome'],color='r')
+       plt.figure(figsize=(10, 6))
+       sns.distplot(Loan['ApplicantIncome'])
     ```
 
 ![png](output_27_1.png)
@@ -428,30 +428,11 @@ Also the ***skewness*** and the ***kurtosis*** is really high as calculated belo
         Kurtosis: 60.540676
     ```
 
-In order to achieve a more acceptable distribution we took the ***log*** of column ***ApplicantIncome*** and ploted the histogram.
-From the below graph it can infered that heavily skewed distribution has been replaced by a reasonable normal distribution.
-
-    ```python
-    import seaborn as sns
-    import numpy as np
-    sns.distplot(np.log(Loan['ApplicantIncome']),color='b')
-    ```
-
-![png](output_29_1.png)
-
-    ```python
-    print("Skewness: %f" % np.log(Loan['ApplicantIncome']).skew())
-    print("Kurtosis: %f" % np.log(Loan['ApplicantIncome']).kurt())
-
-        Skewness: 0.479580
-        Kurtosis: 3.686875
-    ```
-
 From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
 
     ```python
-    import seaborn as sns
-    sns.distplot(Loan['LoanAmount'],color='r')
+        plt.figure(figsize=(10, 6))
+        sns.distplot(Loan['LoanAmount'])
     ```
 
 ![png](output_31_1.png)
@@ -464,45 +445,15 @@ From the below plot of normal distribution of ***LoanAmount*** we can infer that
         Kurtosis: 10.896456
     ```
 
-So to make the distribution look more normal again the same procedure has been followed.
 
     ```python
-    import seaborn as sns
-    import numpy as np
-    sns.distplot(np.log(Loan['LoanAmount']),color='b')
-    ```
-
-![png](output_33_1.png)
-
-The distribution is slightly negatively skewed
-
-    ```python
-    print("Skewness: %f" % np.log(Loan['LoanAmount']).skew())
-    print("Kurtosis: %f" % np.log(Loan['LoanAmount']).kurt())
-    ```
-    Skewness: -0.223227
-    Kurtosis: 2.799973
-
-    ```python
-    import seaborn as sns
-    sns.distplot(Loan['CoapplicantIncome'],color='r')
+        plt.figure(figsize=(10, 6))
+        sns.distplot(Loan['CoapplicantIncome'])
     ```
 
 ![png](output_36_1.png)
 
-    ```python
-    Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
-    ```
-The value 0 has been replaced with 1 as log(0) is undefined and we wont able to plot the histogram.
 
-    ```python
-    import seaborn as sns
-    sns.distplot(np.log(Loan['CoapplicantIncome']),color='b')
-    ```
-
-![png](output_39_1.png)
-
-Frome the above distribution of the log value of CoapplicantIncome it has been found that the range of the modified CoapplicantIncome varied from -3.00 to +13.00. For the rest of the columns, the range varied from 0 to 1. Henceforth, the idea of normalizing the data by taking the log of the column values will not work here. 
 
 
 **Multivariate Analysis**
