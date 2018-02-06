@@ -227,14 +227,13 @@ Below python code has been used in order to implement the normalization in the p
 In extrapolatory data analysis we will get familiar with the data and will ask questions before trying to forecast the data and run machine learning models on the data.
 After skimming through the dataset, following questions started popping in my mind : 
 
-1) Whether there is any gender bias in getting the loans ? 
+1) Whether there is any bias towards the gender of the applicants in case of getting the loans approved ? 
 2) Whether banks are more interested in giving away loans to the married couples ? 
-3) Does Income of the applicans have any contribution in case of the approval of the loans ?
-4) Does the locality where your property is a determing factor in getting the approval for the loan ? 
+3) Does income of the applicans have any contribution in case of the approval of the loans ?
+4) Does the location of your property is a determiningg factor in getting the loans approved ? 
 5) Does credit history have any significance in gettting the approval of the loan ? 
 
 In order to get the answer of all these questions we need to dig in deeper.
-
 Bar plots have been used to viusally represent the data.Below are the barplots of several independent and dependent variables.
 
 ```python
@@ -272,7 +271,6 @@ In a nuttshell, the gist of the analysis is as below :
    6)  Most of the loan applications have been approved.
    7)  Most of the people opted for loan amount term of 360 days.
    8)  More people with 0 dependent applied for the loans
-
 
 **Further analysis gave us following points:**
 
@@ -364,18 +362,18 @@ In a nuttshell, the gist of the analysis is as below :
 
    14) Loans of applicants with 0 dependents got more approved as compared to other applicants. Mainly, because it has been percieved   that applicants with 0 dependents have lesser liabilities.
  
-```python
-    Loan.groupby(['Dependents','Loan_Status'])['Loan_Status'].count()
-        Dependents  Loan_Status
-    0.0         N              107
-                Y              238
-    1.0         N               36
-                Y               66
-    2.0         N               25
-                Y               76
-    3.0         N                1
-    4.0         N               17
-                Y               33
+   ```python
+        Loan.groupby(['Dependents','Loan_Status'])['Loan_Status'].count()
+            Dependents  Loan_Status
+        0.0         N              107
+                    Y              238
+        1.0         N               36
+                    Y               66
+        2.0         N               25
+                    Y               76
+        3.0         N                1
+        4.0         N               17
+                    Y               33
     Name: Loan_Status, dtype: int64
 ```
 
@@ -459,10 +457,8 @@ The distribution is slightly negatively skewed
     print("Skewness: %f" % np.log(Loan['LoanAmount']).skew())
     print("Kurtosis: %f" % np.log(Loan['LoanAmount']).kurt())
     ```
-
     Skewness: -0.223227
     Kurtosis: 2.799973
-    
 
     ```python
     import seaborn as sns
@@ -470,7 +466,6 @@ The distribution is slightly negatively skewed
     ```
 
 ![png](output_36_1.png)
-
 
     ```python
     Loan['CoapplicantIncome'].loc[Loan['CoapplicantIncome'] == 0] = 1
@@ -505,9 +500,7 @@ In multivariate analysis we tried to figure out the pearson correlation coeffici
     plt.title('Correlation between features');
 ```
 
-
 ![png](output_42_0.png)
-
 
 From the above heatmap we can conclude following things:
 
