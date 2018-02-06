@@ -383,6 +383,29 @@ Tried to plot a summary of the dataset which looks as below :
 
 ![png](output_82_1.png)
 
+**Outliers**
+
+Below boxplots will show the outliers of columns **ApplicantIncome, LoanAmount, and CoapplicantIncome.**
+
+```python
+    plt.figure(figsize=(15, 4))
+    sns.boxplot(Loan['ApplicantIncome'],color='orchid')
+```
+![png](output_83_1.png)
+
+```python
+    plt.figure(figsize=(15, 4))
+    sns.boxplot(Loan['LoanAmount'],color='aquamarine')
+```
+![png](output_84_1.png)
+
+```python
+    plt.figure(figsize=(15, 4))
+    sns.boxplot(Loan['CoapplicantIncome'],color='salmon')
+```
+![png](output_85_1.png)
+
+
 **Histogram**
 
   Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
