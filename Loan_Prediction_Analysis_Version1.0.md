@@ -381,7 +381,7 @@ In a nuttshell, the gist of the analysis is as below :
 
 Beow is the summary of the dataset.
 
-            Dependents  | ApplicantIncome | CoapplicantIncome | LoanAmount | Loan_Amount_Term  | Credit_History
+            Dependents  | ApplicantIncome | CoapplicantIncome |   LoanAmount | Loan_Amount_Term  | Credit_History
 
     count    599.0000       614.00000         614.000000        592.000000     600.00000             564.0000
     mean     0.846411      5403.45928        1621.245798        146.412162     342.00000             0.842199
