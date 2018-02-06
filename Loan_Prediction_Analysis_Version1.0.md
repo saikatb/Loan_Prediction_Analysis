@@ -408,53 +408,57 @@ Below boxplots will show the outliers of columns **ApplicantIncome, LoanAmount, 
 
 **Histogram**
 
-  Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
+Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
 
-    ```python
-       plt.figure(figsize=(10, 6))
-       sns.distplot(Loan['ApplicantIncome'])
-    ```
+ ```python
+    plt.figure(figsize=(10, 6))
+    sns.distplot(Loan['ApplicantIncome'])
+ ```
 
 ![png](output_27_1.png)
 
 From the above histogram of ***ApplicantIncome*** column we can see that the distribution is heavily positively skewed. 
 Also the ***skewness*** and the ***kurtosis*** is really high as calculated below.
 
-    ```python
+ ```python
     print("Skewness: %f" % Loan['ApplicantIncome'].skew())
     print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
 
         Skewness: 6.539513
         Kurtosis: 60.540676
-    ```
-
+ ```
 From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
 
-    ```python
-        plt.figure(figsize=(10, 6))
-        sns.distplot(Loan['LoanAmount'])
-    ```
-
+ ```python
+    plt.figure(figsize=(10, 6))
+    sns.distplot(Loan['LoanAmount'])
+ ```
 ![png](output_31_1.png)
 
-    ```python
+Below is the Kurtosis and Skewness value of the loan amount.
+
+ ```python
     print("Skewness: %f" % Loan['LoanAmount'].skew())
     print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
 
         Skewness: 2.726601
         Kurtosis: 10.896456
-    ```
+ ```
+Below plot is the normal distribution of the ***Co applicants' income*** and it is also positively skewed
 
-
-    ```python
-        plt.figure(figsize=(10, 6))
-        sns.distplot(Loan['CoapplicantIncome'])
-    ```
+ ```python
+    plt.figure(figsize=(10, 6))
+    sns.distplot(Loan['CoapplicantIncome'])
+ ```
 
 ![png](output_36_1.png)
 
+Following is the Kurtosis and skewness of Co applicants' income.
 
-
+ ```python
+    print("Skewness: %f" % Loan['CoapplicantIncome'].skew())
+    print("Kurtosis: %f" % Loan['CoapplicantIncome'].kurt())
+ ```
 
 **Multivariate Analysis**
 
