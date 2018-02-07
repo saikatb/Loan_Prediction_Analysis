@@ -381,7 +381,7 @@ In a nuttshell, the gist of the analysis is as below :
 
 Beow is the summary of the dataset.
 
-            Dependents  | ApplicantIncome | CoapplicantIncome |   LoanAmount | Loan_Amount_Term  | Credit_History
+            Dependents    ApplicantIncome  CoapplicantIncome    LoanAmount  Loan_Amount_Term    Credit_History
 
     count    599.0000       614.00000         614.000000        592.000000     600.00000             564.0000
     mean     0.846411      5403.45928        1621.245798        146.412162     342.00000             0.842199
@@ -391,6 +391,8 @@ Beow is the summary of the dataset.
     50%      0.000000      3812.50000        1188.500000        128.000000     360.00000             1.000000
     75%      2.000000      5795.00000        2297.250000        168.000000     360.00000             1.000000
     max      4.000000      81000.0000        41667.00000        700.000000     480.00000             1.000000
+
+From the above data we can conclude that the standard deviations for ApplicationIncome,LoanAmount, and CoapplicantIncome are quite high and there must be some outliers. So lets try to visualize the outliers in the dataset.
 
 **Outliers**
 
