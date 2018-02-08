@@ -471,7 +471,13 @@ Beow is the summary of the dataset.
 </table>
 </div>
 
-From the above data we can conclude that the standard deviations for **ApplicationIncome, LoanAmount, and CoapplicantIncome** are quite high and there must be some outliers. So lets try to visualize the outliers in the boxplot.
+From the above data we can conclude following things :
+  
+  1) The standard deviation of **ApplicationIncome(6109.04)**, 
+  2) The standard deviation of **LoanAmount(84.03)**, 
+  3) The standard deviation and **CoapplicantIncome(2926.24)** 
+
+All these sd values are quite high for the respective 3 variables as mentioned above. Henceforth, there must be some outliers. Lets try to visualize the outliers in the boxplot.
 
 **Outliers**
 
