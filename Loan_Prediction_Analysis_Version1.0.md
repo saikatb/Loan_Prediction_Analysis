@@ -379,22 +379,9 @@ In a nuttshell, the gist of the analysis is as below :
 
 **Descriptive Analysis**
 
-
+Beow is the summary of the dataset.
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -483,10 +470,6 @@ In a nuttshell, the gist of the analysis is as below :
   </tbody>
 </table>
 </div>
-
-
-
-Beow is the summary of the dataset.
 
               Dependents    ApplicantIncome  CoapplicantIncome    LoanAmount  Loan_Amount_Term    Credit_History
 
