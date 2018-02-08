@@ -236,6 +236,8 @@ After skimming through the dataset, following questions started popping in my mi
 In order to get the answer of all these questions we need to dig in deeper.
 Bar plots have been used to viusally represent the data.Below are the barplots of several independent and dependent variables.
 
+**Univariate Graphical EDA **
+
 ```python
     f,ax=plt.subplots(2,3,figsize=(12,12))
     sns.countplot('Gender',data=Loan,ax=ax[0,0])
@@ -272,8 +274,10 @@ In a nuttshell, the gist of the analysis is as below :
    7)  Most of the people opted for loan amount term of 360 days.
    8)  More people with 0 dependent applied for the loans
 
-**Further analysis gave us following points:**
-
+**Bivariate Non Graphical EDA:**
+   
+   Further analysis gave us following points:
+    
 ```python
    Loan.groupby(['Gender','Loan_Status'])['Education'].count()
 
@@ -377,6 +381,63 @@ In a nuttshell, the gist of the analysis is as below :
     Name: Loan_Status, dtype: int64
 ```
 
+**Univariate Graphical EDA ( histogram )**
+
+Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
+
+ ```python
+    plt.figure(figsize=(10, 6))
+    sns.distplot(Loan['ApplicantIncome'])
+ ```
+
+![png](output_27_1.png)
+
+From the above histogram of ***ApplicantIncome*** column we can see that the distribution is heavily positively skewed. 
+Also the ***skewness*** and the ***kurtosis*** is really high as calculated below.
+
+ ```python
+    print("Skewness: %f" % Loan['ApplicantIncome'].skew())
+    print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
+
+        Skewness: 6.539513
+        Kurtosis: 60.540676
+ ```
+From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
+
+ ```python
+    plt.figure(figsize=(10, 6))
+    sns.distplot(Loan['LoanAmount'])
+ ```
+![png](output_31_1.png)
+
+Below is the Kurtosis and Skewness value of the loan amount.
+
+ ```python
+    print("Skewness: %f" % Loan['LoanAmount'].skew())
+    print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
+
+        Skewness: 2.726601
+        Kurtosis: 10.896456
+ ```
+Below plot is the normal distribution of the ***Co applicants' income*** and it is also positively skewed
+
+ ```python
+    plt.figure(figsize=(10, 6))
+    sns.distplot(Loan['CoapplicantIncome'])
+ ```
+
+![png](output_36_1.png)
+
+Following is the Kurtosis and skewness of Co applicants' income.
+
+ ```python
+    print("Skewness: %f" % Loan['CoapplicantIncome'].skew())
+    print("Kurtosis: %f" % Loan['CoapplicantIncome'].kurt())
+        
+        Skewness: 7.491531
+        Kurtosis: 84.956384
+ ```
+
 **Descriptive Analysis**
 
 Beow is the summary of the dataset.
@@ -479,7 +540,7 @@ From the above data we can conclude following things :
 
 All these sd values are quite high for the respective 3 variables as mentioned above. Henceforth, there must be some outliers. Lets try to visualize the outliers in the boxplot.
 
-**Outliers**
+**Outlier Analysis - Univariate Graphical EDA ( Boxplots )**
 
 Below boxplots will show the outliers of columns **ApplicantIncome, LoanAmount, and CoapplicantIncome.**
 
@@ -501,65 +562,61 @@ Below boxplots will show the outliers of columns **ApplicantIncome, LoanAmount, 
 ```
 ![png](output_85_1.png)
 
+Below we made a dataframe of the summary of the Loan dataframe and then set 
 
-**Histogram**
+```python
+    Loan_summary_df = pd.DataFrame(Loan.describe())
+```
+The max value of the outliers have been calculated by taking multiples of 1.5 to 50%
 
-Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
+```python
+    Loan_ApplicantIncome_summary = Loan_summary_df['ApplicantIncome']
+    Loan_CoapplicantIncome_summary = Loan_summary_df['CoapplicantIncome']
+    Loan_LoanAmount_summary = Loan_summary_df['LoanAmount']
+    Loan_Loan_Amount_Term_summary = Loan_summary_df['Loan_Amount_Term']
+    
+    x =1.5
+    Loan_ApplicantIncome_outlier = Loan_ApplicantIncome_summary['50%']*x
+    Loan_CoapplicantIncome_outlier = Loan_CoapplicantIncome_summary['50%']*x
+    Loan_LoanAmount_outlier = Loan_LoanAmount_summary['50%']*x
+    Loan_Loan_Amount_Term_outlier = Loan_Loan_Amount_Term_summary['50%']*x
+```
 
- ```python
-    plt.figure(figsize=(10, 6))
-    sns.distplot(Loan['ApplicantIncome'])
- ```
+   Below are the corresponding values of the outliers:
+   
+   1) Loan_ApplicantIncome_outlier = 5718.75, 
+   2) Loan_CoapplicantIncome_outlier = 1782.75, 
+   3) Loan_LoanAmount_outlier = 193.5, 
+   4) Loan_Loan_Amount_Term_outlier = 540.0
 
-![png](output_27_1.png)
+```python
+   Loan_variables =         pd.concat([Loan['ApplicantIncome'],Loan['CoapplicantIncome'],Loan['LoanAmount'],Loan['Loan_Amount_Term'],Loan['Gender'],Loan['Married']    ,Loan['Education'],Loan['Self_Employed'],Loan['Credit_History'],Loan['Property_Area']],axis=1) 
 
-From the above histogram of ***ApplicantIncome*** column we can see that the distribution is heavily positively skewed. 
-Also the ***skewness*** and the ***kurtosis*** is really high as calculated below.
+   outliers_ApplicantIncome_index = Loan_4_variables['ApplicantIncome'] > Loan_ApplicantIncome_outlier
+   outliers_CoapplicantIncome_index = Loan_4_variables['CoapplicantIncome'] > Loan_CoapplicantIncome_outlier
+   outliers_LoanAmount_index = Loan_4_variables['LoanAmount'] > Loan_LoanAmount_outlier
+   outliers_Loan_Amount_Term_index = Loan_4_variables['Loan_Amount_Term'] > Loan_Loan_Amount_Term_outlier
+```
+   Below are the values of the outlier indexes:
+   
+   1) outliers_ApplicantIncome_index = 158
+   2) outliers_CoapplicantIncome_index = 231
+   3) outliers_LoanAmount_index = 88
+   4) outliers_Loan_Amount_Term_index = 0
 
- ```python
-    print("Skewness: %f" % Loan['ApplicantIncome'].skew())
-    print("Kurtosis: %f" % Loan['ApplicantIncome'].kurt())
+```python
+   
+   outliers_ApplicantIncome = Loan_4_variables[outliers_ApplicantIncome_index]
+   outliers_CoapplicantIncome = Loan_4_variables[outliers_CoapplicantIncome_index]
+   outliers_LoanAmount = Loan_4_variables[outliers_LoanAmount_index]
+   outliers_Loan_Amount_Term = Loan_4_variables[outliers_Loan_Amount_Term_index]
 
-        Skewness: 6.539513
-        Kurtosis: 60.540676
- ```
-From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
+   outliers_master = Loan_4_variables[outliers_ApplicantIncome_index][outliers_CoapplicantIncome_index][outliers_LoanAmount_index]
+```
+From the outliers_master dataframe we got the loan ID of 20 different applicants. All of them are graduates, 17 of them are Salaried, and 15 of them are married.All of them are male with loan term of 360.0
 
- ```python
-    plt.figure(figsize=(10, 6))
-    sns.distplot(Loan['LoanAmount'])
- ```
-![png](output_31_1.png)
 
-Below is the Kurtosis and Skewness value of the loan amount.
-
- ```python
-    print("Skewness: %f" % Loan['LoanAmount'].skew())
-    print("Kurtosis: %f" % Loan['LoanAmount'].kurt())
-
-        Skewness: 2.726601
-        Kurtosis: 10.896456
- ```
-Below plot is the normal distribution of the ***Co applicants' income*** and it is also positively skewed
-
- ```python
-    plt.figure(figsize=(10, 6))
-    sns.distplot(Loan['CoapplicantIncome'])
- ```
-
-![png](output_36_1.png)
-
-Following is the Kurtosis and skewness of Co applicants' income.
-
- ```python
-    print("Skewness: %f" % Loan['CoapplicantIncome'].skew())
-    print("Kurtosis: %f" % Loan['CoapplicantIncome'].kurt())
-        
-        Skewness: 7.491531
-        Kurtosis: 84.956384
- ```
-
-**Multivariate Analysis**
+**Multivariate Graphical EDA**
 
 In multivariate analysis we tried to figure out the pearson correlation coefficient among different columns using a heatmap.
 
