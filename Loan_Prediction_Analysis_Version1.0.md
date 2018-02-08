@@ -613,7 +613,7 @@ The max value of the outliers have been calculated by taking multiples of 1.5 to
 
    outliers_master = Loan_4_variables[outliers_ApplicantIncome_index][outliers_CoapplicantIncome_index][outliers_LoanAmount_index]
 ```
-From the outliers_master dataframe we got the loan ID of 20 different applicants. All of them are graduates, 17 of them are Salaried, and 15 of them are married.All of them are male with loan term of 360.0
+From the dataframe outliers_master we got loanIDs' of 20 different applicants. All of them are graduates, 17 of them are salaried, and 15 of them are married. All of them are male and they all have loan term of 360.0 for their applied loans.
 
 
 **Multivariate Graphical EDA**
