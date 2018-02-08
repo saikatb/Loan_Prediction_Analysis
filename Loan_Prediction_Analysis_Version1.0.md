@@ -471,17 +471,6 @@ Beow is the summary of the dataset.
 </table>
 </div>
 
-              Dependents    ApplicantIncome  CoapplicantIncome    LoanAmount  Loan_Amount_Term    Credit_History
-
-    count    599.0000       614.00000         614.000000        592.000000     600.00000             564.0000
-    mean     0.846411      5403.45928        1621.245798        146.412162     342.00000             0.842199
-    std      1.217123      6109.04167        2926.248369         85.587325      65.12041             0.364878
-    min      0.000000       150.00000           0.000000         9.0000000      12.00000             0.000000
-    25%      0.000000      2877.50000           0.000000        100.000000     360.00000             1.000000
-    50%      0.000000      3812.50000        1188.500000        128.000000     360.00000             1.000000
-    75%      2.000000      5795.00000        2297.250000        168.000000     360.00000             1.000000
-    max      4.000000      81000.0000        41667.00000        700.000000     480.00000             1.000000
-
 From the above data we can conclude that the standard deviations for **ApplicationIncome, LoanAmount, and CoapplicantIncome** are quite high and there must be some outliers. So lets try to visualize the outliers in the boxplot.
 
 **Outliers**
