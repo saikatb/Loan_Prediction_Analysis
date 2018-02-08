@@ -592,10 +592,10 @@ The max value of the outliers have been calculated by taking multiples of 1.5 to
 ```python
   Loan_variables=pd.concat([Loan['ApplicantIncome'],Loan['CoapplicantIncome'],Loan['LoanAmount'],Loan['Loan_Amount_Term'],Loan['Gender'],Loan['Married']    ,Loan['Education'],Loan['Self_Employed'],Loan['Credit_History'],Loan['Property_Area']],axis=1)
 
-  outliers_ApplicantIncome_index = Loan_4_variables['ApplicantIncome'] > Loan_ApplicantIncome_outlier
-  outliers_CoapplicantIncome_index = Loan_4_variables['CoapplicantIncome'] > Loan_CoapplicantIncome_outlier
-  outliers_LoanAmount_index = Loan_4_variables['LoanAmount'] > Loan_LoanAmount_outlier
-  outliers_Loan_Amount_Term_index = Loan_4_variables['Loan_Amount_Term'] > Loan_Loan_Amount_Term_outlier
+  outliers_ApplicantIncome_index = Loan_variables['ApplicantIncome'] > Loan_ApplicantIncome_outlier
+  outliers_CoapplicantIncome_index = Loan_variables['CoapplicantIncome'] > Loan_CoapplicantIncome_outlier
+  outliers_LoanAmount_index = Loan_variables['LoanAmount'] > Loan_LoanAmount_outlier
+  outliers_Loan_Amount_Term_index = Loan_variables['Loan_Amount_Term'] > Loan_Loan_Amount_Term_outlier
 ```
    Below are the values of the outlier indexes:
    
