@@ -236,7 +236,7 @@ After skimming through the dataset, following questions started popping in my mi
 In order to get the answer of all these questions we need to dig in deeper.
 Bar plots have been used to viusally represent the data.Below are the barplots of several independent and dependent variables.
 
-**Univariate Graphical EDA **
+**Univariate Graphical EDA**
 
 ```python
     f,ax=plt.subplots(2,3,figsize=(12,12))
@@ -562,27 +562,27 @@ Below boxplots will show the outliers of columns **ApplicantIncome, LoanAmount, 
 ```
 ![png](output_85_1.png)
 
-Below we made a dataframe of the summary of the Loan dataframe and then set 
+A seperate dataframe has been created with the summary of the loan dataset.
 
 ```python
-    Loan_summary_df = pd.DataFrame(Loan.describe())
+   Loan_summary_df = pd.DataFrame(Loan.describe())
 ```
 The max value of the outliers have been calculated by taking multiples of 1.5 to 50%
 
 ```python
-    Loan_ApplicantIncome_summary = Loan_summary_df['ApplicantIncome']
-    Loan_CoapplicantIncome_summary = Loan_summary_df['CoapplicantIncome']
-    Loan_LoanAmount_summary = Loan_summary_df['LoanAmount']
-    Loan_Loan_Amount_Term_summary = Loan_summary_df['Loan_Amount_Term']
+   Loan_ApplicantIncome_summary = Loan_summary_df['ApplicantIncome']
+   Loan_CoapplicantIncome_summary = Loan_summary_df['CoapplicantIncome']
+   Loan_LoanAmount_summary = Loan_summary_df['LoanAmount']
+   Loan_Loan_Amount_Term_summary = Loan_summary_df['Loan_Amount_Term']
     
-    x =1.5
-    Loan_ApplicantIncome_outlier = Loan_ApplicantIncome_summary['50%']*x
-    Loan_CoapplicantIncome_outlier = Loan_CoapplicantIncome_summary['50%']*x
-    Loan_LoanAmount_outlier = Loan_LoanAmount_summary['50%']*x
-    Loan_Loan_Amount_Term_outlier = Loan_Loan_Amount_Term_summary['50%']*x
+   x =1.5
+   Loan_ApplicantIncome_outlier = Loan_ApplicantIncome_summary['50%']*x
+   Loan_CoapplicantIncome_outlier = Loan_CoapplicantIncome_summary['50%']*x
+   Loan_LoanAmount_outlier = Loan_LoanAmount_summary['50%']*x
+   Loan_Loan_Amount_Term_outlier = Loan_Loan_Amount_Term_summary['50%']*x
 ```
 
-   Below are the corresponding values of the outliers:
+  Below are the corresponding values of the outliers:
    
    1) Loan_ApplicantIncome_outlier = 5718.75, 
    2) Loan_CoapplicantIncome_outlier = 1782.75, 
@@ -590,12 +590,12 @@ The max value of the outliers have been calculated by taking multiples of 1.5 to
    4) Loan_Loan_Amount_Term_outlier = 540.0
 
 ```python
-   Loan_variables =         pd.concat([Loan['ApplicantIncome'],Loan['CoapplicantIncome'],Loan['LoanAmount'],Loan['Loan_Amount_Term'],Loan['Gender'],Loan['Married']    ,Loan['Education'],Loan['Self_Employed'],Loan['Credit_History'],Loan['Property_Area']],axis=1) 
+         Loan_variables=pd.concat([Loan['ApplicantIncome'],Loan['CoapplicantIncome'],Loan['LoanAmount'],Loan['Loan_Amount_Term'],Loan['Gender'],Loan['Married']    ,Loan['Education'],Loan['Self_Employed'],Loan['Credit_History'],Loan['Property_Area']],axis=1) 
 
-   outliers_ApplicantIncome_index = Loan_4_variables['ApplicantIncome'] > Loan_ApplicantIncome_outlier
-   outliers_CoapplicantIncome_index = Loan_4_variables['CoapplicantIncome'] > Loan_CoapplicantIncome_outlier
-   outliers_LoanAmount_index = Loan_4_variables['LoanAmount'] > Loan_LoanAmount_outlier
-   outliers_Loan_Amount_Term_index = Loan_4_variables['Loan_Amount_Term'] > Loan_Loan_Amount_Term_outlier
+  outliers_ApplicantIncome_index = Loan_4_variables['ApplicantIncome'] > Loan_ApplicantIncome_outlier
+  outliers_CoapplicantIncome_index = Loan_4_variables['CoapplicantIncome'] > Loan_CoapplicantIncome_outlier
+  outliers_LoanAmount_index = Loan_4_variables['LoanAmount'] > Loan_LoanAmount_outlier
+  outliers_Loan_Amount_Term_index = Loan_4_variables['Loan_Amount_Term'] > Loan_Loan_Amount_Term_outlier
 ```
    Below are the values of the outlier indexes:
    
