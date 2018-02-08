@@ -379,6 +379,113 @@ In a nuttshell, the gist of the analysis is as below :
 
 **Descriptive Analysis**
 
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dependents</th>
+      <th>ApplicantIncome</th>
+      <th>CoapplicantIncome</th>
+      <th>LoanAmount</th>
+      <th>Loan_Amount_Term</th>
+      <th>Credit_History</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>614.000000</td>
+      <td>614.000000</td>
+      <td>614.000000</td>
+      <td>614.000000</td>
+      <td>614.000000</td>
+      <td>614.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.825733</td>
+      <td>5403.459283</td>
+      <td>1621.245798</td>
+      <td>146.412162</td>
+      <td>342.000000</td>
+      <td>0.842199</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.209231</td>
+      <td>6109.041673</td>
+      <td>2926.248369</td>
+      <td>84.037468</td>
+      <td>64.372489</td>
+      <td>0.349681</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>150.000000</td>
+      <td>0.000000</td>
+      <td>9.000000</td>
+      <td>12.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>2877.500000</td>
+      <td>0.000000</td>
+      <td>100.250000</td>
+      <td>360.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>3812.500000</td>
+      <td>1188.500000</td>
+      <td>129.000000</td>
+      <td>360.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.000000</td>
+      <td>5795.000000</td>
+      <td>2297.250000</td>
+      <td>164.750000</td>
+      <td>360.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>4.000000</td>
+      <td>81000.000000</td>
+      <td>41667.000000</td>
+      <td>700.000000</td>
+      <td>480.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 Beow is the summary of the dataset.
 
               Dependents    ApplicantIncome  CoapplicantIncome    LoanAmount  Loan_Amount_Term    Credit_History
