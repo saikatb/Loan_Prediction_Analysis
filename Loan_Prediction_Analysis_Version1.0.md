@@ -383,13 +383,14 @@ In a nuttshell, the gist of the analysis is as below :
 
 **Univariate Graphical EDA ( histogram )**
 
-Histogram is a technique to do extrapolatory data analysis of any dataset with the visual method.
+In order to plot a univariate distribution, distplot() function has been used. By default, this will draw a histogram and will fit a kernel density estimation (KDE)
+
+Below is the plot of histogram, kde(kernel Density Estimation), and rugplot together in a single frame.
 
  ```python
-    plt.figure(figsize=(10, 6))
-    sns.distplot(Loan['ApplicantIncome'])
+    plt.figure(figsize=(12, 6))
+    sns.distplot(Loan['ApplicantIncome'],hist=True, rug=True)
  ```
-
 ![png](output_27_1.png)
 
 From the above histogram of ***ApplicantIncome*** column we can see that the distribution is heavily positively skewed. 
@@ -405,8 +406,8 @@ Also the ***skewness*** and the ***kurtosis*** is really high as calculated belo
 From the below plot of normal distribution of ***LoanAmount*** we can infer that the distribution is a little positively skewed with a moderately high peak ( high kurtosis )
 
  ```python
-    plt.figure(figsize=(10, 6))
-    sns.distplot(Loan['LoanAmount'])
+    plt.figure(figsize=(12, 6))
+    sns.distplot(Loan['LoanAmount'],hist=True, rug=True)
  ```
 ![png](output_31_1.png)
 
@@ -419,13 +420,12 @@ Below is the Kurtosis and Skewness value of the loan amount.
         Skewness: 2.726601
         Kurtosis: 10.896456
  ```
-Below plot is the normal distribution of the ***Co applicants' income*** and it is also positively skewed
+Below plot is the normal distribution of the ***Coapplicants' income*** and it is also positively skewed
 
  ```python
-    plt.figure(figsize=(10, 6))
-    sns.distplot(Loan['CoapplicantIncome'])
+    plt.figure(figsize=(12, 6))
+    sns.distplot(Loan['CoapplicantIncome'],hist=True, rug=True)
  ```
-
 ![png](output_36_1.png)
 
 Following is the Kurtosis and skewness of Co applicants' income.
