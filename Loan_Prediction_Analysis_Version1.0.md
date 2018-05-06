@@ -1,7 +1,7 @@
 
 This project has asked for not only to determine whether the loan has got approved or not but also the hidden insights in the dataframe proveided in the dataframe in the form of data.
 
-Below is my plan with which i would like to stick to if i want to do the datascience related analysis of the given dataframe.
+Below steps had been taken in order to process and analyse the data of the loan dataset.
 
 1) Understanding Dataset
 2) Data preprocessing
