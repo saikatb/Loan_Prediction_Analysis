@@ -230,7 +230,7 @@ After skimming through the dataset, following questions started popping in my mi
 1) Whether there is any bias towards the gender of the applicants in case of getting the loans approved ? 
 2) Whether banks are more interested in giving away loans to the married couples ? 
 3) Does income of the applicans have any contribution in case of the approval of the loans ?
-4) Does the location of your property is a determiningg factor in getting the loans approved ? 
+4) Does the location of your property be a determining factor in getting the loans approved ? 
 5) Does credit history have any significance in gettting the approval of the loan ? 
 
 In order to get the answer of all these questions we need to dig in deeper.
